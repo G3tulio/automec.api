@@ -1,0 +1,941 @@
+{
+	"info": {
+		"_postman_id": "bd2f9f5b-7a60-45a5-9bad-7a6a1f8501e1",
+		"name": "Automec",
+		"description": "Coleção de API do projeto, gestão de automecânicas.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41487177"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Listar todos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/automec/cliente/listarTodos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"automec",
+								"cliente",
+								"listarTodos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"nome\":\"Nome de outro cliente\",\r\n\t\"razaoSocial\":\"PJ\",\r\n\t\"cpf\":\"\",\r\n\t\"cnpj\":\"07.847.438/0001-59\",\r\n\t\"fone\":\"12.1.1234.4321\",\r\n\t\"celular\":\"21.2.4321.1234\",\r\n\t\"email\":\"clienteDois@email.com\",\r\n\t\"endereco\":\"Descição do endereço\",\r\n\t\"nroEndereco\":\"1177\",\r\n\t\"complemento\":\"Igarape 2\",\r\n\t\"bairro\":\"Janga\",\r\n\t\"cep\":\"12.321-123\",\r\n\t\"cidade\":\"Paulista\",\r\n\t\"uf\":\"PE\",\r\n\t\"observacao\":\"Campo observação\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/automec/cliente/adicionar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"automec",
+								"cliente",
+								"adicionar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"codigo\": 1,\r\n    \"nome\": \"Getúlio Silva\",\r\n\t\"razaoSocial\": \"PF\",\r\n\t\"cpf\": \"996.085.614-34\",\r\n\t\"cnpj\": \"\",\r\n\t\"fone\": \"\",\r\n\t\"celular\": \"81.9.8690.2812\",\r\n\t\"email\": \"getulio.gomes@hotmail.com\",\r\n\t\"endereco\": \"Rua Arthur PE de Almeida, 1177\",\r\n\t\"nroEndereco\": \"1177\",\r\n\t\"complemento\": \"Igarape 2\",\r\n\t\"bairro\": \"Janga\",\r\n\t\"cep\": \"53.439-280\",\r\n\t\"cidade\": \"Paulista\",\r\n\t\"uf\": \"PE\",\r\n\t\"observacao\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/automec/cliente/atualizar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"automec",
+								"cliente",
+								"atualizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/automec/cliente/deletar/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"automec",
+								"cliente",
+								"deletar",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pesquisar por código",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/automec/cliente/pesquisarPorCodigo/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"automec",
+								"cliente",
+								"pesquisarPorCodigo",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tabelas de apoio",
+			"item": [
+				{
+					"name": "Marca",
+					"item": [
+						{
+							"name": "Listar todos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/marca/listarTodos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"marca",
+										"listarTodos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"descricao\":\"Pode Excluir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/marca/adicionar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"marca",
+										"adicionar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codigo\": 4,\r\n    \"descricao\":\"Ford\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/marca/atualizar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"marca",
+										"atualizar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/marca/deletar/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"marca",
+										"deletar",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pesquisar por código",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/marca/pesquisarPorCodigo/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"marca",
+										"pesquisarPorCodigo",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Modelo",
+					"item": [
+						{
+							"name": "Listar todos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/modelo/listarTodos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"modelo",
+										"listarTodos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"descricao\":\"Siena\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/modelo/adicionar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"modelo",
+										"adicionar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codigo\": 3,\r\n    \"descricao\":\"Gol G3\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/modelo/atualizar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"modelo",
+										"atualizar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/modelo/deletar/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"modelo",
+										"deletar",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pesquisar por código",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/modelo/pesquisarPorCodigo/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"modelo",
+										"pesquisarPorCodigo",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gestão de acesso",
+			"item": [
+				{
+					"name": "Perfil",
+					"item": [
+						{
+							"name": "Listar",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/perfil/listar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"perfil",
+										"listar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"descricao\": \"Teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/perfil/adicionar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"perfil",
+										"adicionar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codigo\": 3,\r\n    \"descricao\": \"Pode excluir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/perfil/atualizar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"perfil",
+										"atualizar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/perfil/deletar/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"perfil",
+										"deletar",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pesquisar por código",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/perfil/pesquisarPorCodigo/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"perfil",
+										"pesquisarPorCodigo",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Serviços para manuteção dos dados da entidade perfil"
+				},
+				{
+					"name": "Funcionalidade",
+					"item": [
+						{
+							"name": "Listar todos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/funcionalidade/listarTodos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"funcionalidade",
+										"listarTodos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"descricao\":\"Teste\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/funcionalidade/adicionar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"funcionalidade",
+										"adicionar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codigo\": 10,\r\n    \"descricao\": \"Pode excluir\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/funcionalidade/atualizar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"funcionalidade",
+										"atualizar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/funcionalidade/deletar/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"funcionalidade",
+										"deletar",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pesquisar por código",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/funcionalidade/pesquisarPorCodigo/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"funcionalidade",
+										"pesquisarPorCodigo",
+										"5"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Usuário",
+					"item": [
+						{
+							"name": "Listar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/usuario/listar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"usuario",
+										"listar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Teste\",\r\n    \"email\": \"mecanico.treino@email.com\",\r\n    \"login\": \"teste.abc\",\r\n    \"senha\": \"get@159\",\r\n    \"situacao\": \"A\",\r\n    \"perfil\": {\r\n        \"codigo\": 2,\r\n        \"descricao\": \"Analista\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/usuario/adicionar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"usuario",
+										"adicionar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"codigo\": 3,\r\n    \"nome\": \"Getúlio Silva\",\r\n    \"email\": \"getulio.silva@email.br\",\r\n    \"login\": \"getulio.silva\",\r\n    \"senha\": \"get@159\",\r\n    \"situacao\": \"A\",\r\n    \"perfil\": {\r\n        \"codigo\": 2,\r\n        \"descricao\": \"Analista\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/usuario/atualizar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"usuario",
+										"atualizar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/usuario/deletar/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"usuario",
+										"deletar",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pesquisar código",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/usuario/pesquisarCodigo/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"usuario",
+										"pesquisarCodigo",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pesquisar nome",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/automec/usuario/pesquisarNome/MECANICO LIDER 01",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"usuario",
+										"pesquisarNome",
+										"MECANICO LIDER 01"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Autenticar",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"login\":\"getulio.silva\",\r\n    \"senha\":\"get@159\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/automec/usuario/autenticar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"automec",
+										"usuario",
+										"autenticar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

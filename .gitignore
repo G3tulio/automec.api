@@ -1,0 +1,4 @@
+# Arquivos gerados pelo Maven
+/target/
+*.jar
+*.war
