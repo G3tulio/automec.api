@@ -42,7 +42,7 @@ public class MarcaController {
 	@PostMapping(value = "adicionar")
 	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody MarcaDTO marcaDTO) {
 		try {
-			this.marcaService.adicionar(marcaDTO);
+			this.marcaService.gravar(marcaDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -58,7 +58,7 @@ public class MarcaController {
 	@PutMapping(value = "atualizar")
 	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody MarcaDTO marcaDTO) {
 		try {
-			this.marcaService.atualizar(marcaDTO);
+			this.marcaService.gravar(marcaDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -113,6 +113,18 @@ public class MarcaController {
 		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
 		                		                e.getMessage()));
 	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+	                		                Constants.OCORREU_ERRO + e.getMessage()));
+	    }
+	}
+	    
+	@GetMapping(value = "pesquisarPorDescricao/{desMarca}")
+	public ResponseEntity<ResponseDTO<List<MarcaDTO>>> pesquisarPorDescricao(@PathVariable("desMarca") String pDesMarca) {
+		try {
+			List<MarcaDTO> lista = this.marcaService.pesquisarPorDescricao(pDesMarca);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
+		} catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
 	                		                Constants.OCORREU_ERRO + e.getMessage()));

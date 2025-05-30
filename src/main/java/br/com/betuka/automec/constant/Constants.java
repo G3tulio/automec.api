@@ -68,8 +68,9 @@ public class Constants {
 	 */
 	public static final String MARCA_INEXISTENTE = "Marca inexistente.";
 	public static final String MARCA_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
-	
+	public static final String MARCA_JA_CADASTRADO = "Marca já cadastrada.";
 	public static final String MARCAR_CODIGO_N_INFRORMADO = "Informe o código da marca.";
+	public static final String MARCA_UTILIZADA = "Não foi possível excluir a marca. Existem registros relacionados.";
 	
 	/*
 	 * Constants Recurso
