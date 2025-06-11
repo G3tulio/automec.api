@@ -119,10 +119,10 @@ public class MarcaController {
 	    }
 	}
 	    
-	@GetMapping(value = "pesquisarPorDescricao/{desMarca}")
-	public ResponseEntity<ResponseDTO<List<MarcaDTO>>> pesquisarPorDescricao(@PathVariable("desMarca") String pDesMarca) {
+	@GetMapping(value = "buscarDescricao/{desMarca}")
+	public ResponseEntity<ResponseDTO<List<MarcaDTO>>> buscarDescricao(@PathVariable("desMarca") String pDesMarca) {
 		try {
-			List<MarcaDTO> lista = this.marcaService.pesquisarPorDescricao(pDesMarca);
+			List<MarcaDTO> lista = this.marcaService.buscarDescricao(pDesMarca);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

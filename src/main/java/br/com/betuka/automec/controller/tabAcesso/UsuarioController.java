@@ -107,6 +107,22 @@ public class UsuarioController {
 	    }
 	}
 	
+	@GetMapping("pesquisarNome/{nome}")
+	public ResponseEntity<ResponseDTO<UsuarioDTO>> pesquisarNome(@PathVariable("nome") String pNome) {
+		try {
+			UsuarioDTO usuarioDTO = this.usuarioService.pesquisarNome(pNome);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, usuarioDTO));
+		} catch (ValidationException e) {
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+		                		                e.getMessage()));
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+	                		                Constants.OCORREU_ERRO + e.getMessage()));
+	    }
+	}
+	
 	@GetMapping("pesquisarLogin/{login}")
 	public ResponseEntity<ResponseDTO<UsuarioDTO>> pesquisarLogin(@PathVariable("login") String pLogin) {
 		try {

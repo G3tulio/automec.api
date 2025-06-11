@@ -10,10 +10,10 @@ import br.com.betuka.automec.model.tabAcesso.UsuarioEntity;
 
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer> {
 	
-	@Query("SELECT u FROM UsuarioEntity u where u.login = :login")
+	@Query("select u from UsuarioEntity u where u.login = :login")
 	Optional<UsuarioEntity> pesquisarLogin(@Param("login") String login);
 	
-	@Query("SELECT u FROM UsuarioEntity u where u.nome = :nome")
+	@Query("select u from UsuarioEntity u where u.nome = :nome")
 	Optional<UsuarioEntity> pesquisarNome(@Param("nome") String nome);
 	
 }

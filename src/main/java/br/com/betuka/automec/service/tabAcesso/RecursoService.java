@@ -63,9 +63,9 @@ public class RecursoService {
 	}
 	
 	public void deletar(int codRecurso) throws ValidationException, Exception {
-		this.pesquisarCodigo(codRecurso); // Caso não encontre levanta uma ValidationException
+		this.pesquisarCodigo(codRecurso); // Caso não encontre levanta ValidationException
 		
-		// Masis a frente, antes de excluir verificar se o recurso está sendo usando em uma FK
+		// Mais a frente, antes de excluir verificar se o recurso está sendo usando em uma [ FK ]
 		
     	try {
     		this.recursoRepository.deleteById(codRecurso);
@@ -94,9 +94,9 @@ public class RecursoService {
 		}
     }
     
-    public List<RecursoDTO> pesquisarPorDescricao(String desRecurso) throws ValidationException, Exception {
+    public List<RecursoDTO> buscarDescricao(String desRecurso) throws ValidationException, Exception {
     	try {
-    		return RecursoDTO.toList(this.recursoRepository.pesquisarPorDescricao(desRecurso));
+    		return RecursoDTO.toList(this.recursoRepository.buscarDescricao(desRecurso));
     	} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

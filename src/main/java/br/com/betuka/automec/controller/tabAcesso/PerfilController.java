@@ -119,10 +119,10 @@ public class PerfilController {
 	    }
     } 
 
-    @GetMapping(value = "pesquisarPorDescricao/{desPerfil}")
-    public ResponseEntity<ResponseDTO<List<PerfilDTO>>> pesquisarPorDescricao(@PathVariable("desPerfil") String pDesPerfil ) {
+    @GetMapping(value = "buscarDescricao/{desPerfil}")
+    public ResponseEntity<ResponseDTO<List<PerfilDTO>>> buscarDescricao(@PathVariable("desPerfil") String pDesPerfil ) {
 		try {
-			List<PerfilDTO> lista = this.perfilService.pesquisarPorDescricao(pDesPerfil);
+			List<PerfilDTO> lista = this.perfilService.buscarDescricao(pDesPerfil);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -23,38 +23,34 @@ public class ModeloService {
 	private MarcaService marcaService;
 	
 	public List<ModeloDTO> listar() {
-		List<ModeloEntity> lista = this.modeloRepository.findAll();
-		return lista.stream().map(ModeloDTO::new).toList();
+		return ModeloDTO.toList(this.modeloRepository.findAll());
 	}
 	
-	private void validarEntrada(ModeloDTO pModeloDTO) throws ValidationException, Exception {
-		if (pModeloDTO.getCodModelo() != 0) {
-			this.pesquisarCodigo(pModeloDTO.getCodModelo()); // Caso não encontre já levanta uma Exception
+	private void validarEntrada(ModeloDTO modeloDTO) throws ValidationException, Exception {
+		if (modeloDTO.getCodModelo() != 0) {
+			this.pesquisarCodigo(modeloDTO.getCodModelo()); // Caso não encontre levanta ValidationException
 		}
 		
-		if (pModeloDTO.getDesModelo().isEmpty()) {
+		if (modeloDTO.getDesModelo().isBlank()) {
 			throw new ValidationException(Constants.MODELO_DESCRICAO_OBRIGATORIA);
 		}
 		
-		if (pModeloDTO.getMarca().getCodMarca() == 0) {
+		if (modeloDTO.getMarca().getCodMarca() == 0) {
 			throw new ValidationException(Constants.MARCAR_CODIGO_N_INFRORMADO);
 		}
 		
-		this.marcaService.pesquisarCodigo(pModeloDTO.getMarca().getCodMarca());
+		this.marcaService.pesquisarCodigo(modeloDTO.getMarca().getCodMarca());
 	}
 	
-	public void adicionar(ModeloDTO modeloDTO) throws ValidationException, Exception {
-		this.validarEntrada(modeloDTO);
-		this.modeloRepository.save( new ModeloEntity(modeloDTO) );
-	}
-	
-	public void atualizar(ModeloDTO modeloDTO) throws ValidationException, Exception {
+	public void gravar(ModeloDTO modeloDTO) throws ValidationException, Exception {
 		this.validarEntrada(modeloDTO);
 		this.modeloRepository.save( new ModeloEntity(modeloDTO) );
 	}
 	
 	public void deletar(int codModelo) throws ValidationException, Exception {
-		this.pesquisarCodigo(codModelo); // Caso não encontre levanta uma ValidationException
+		this.pesquisarCodigo(codModelo); // Caso não encontre levanta ValidationException
+		
+		// Testar quando cadastar os veículos associados a uma marca
 		
 		try {
 			this.modeloRepository.deleteById(codModelo);	
@@ -83,9 +79,9 @@ public class ModeloService {
 		}
 	}
 	
-	public List<VWModelosMarcaDTO> listarModelosMarca(int codMarca) throws ValidationException, Exception {
+	public List<VWModelosMarcaDTO> buscarModelosPorMarca(int codMarca) throws ValidationException, Exception {
 		try {
-			return this.modeloRepository.listarModelosMarca(codMarca).get();
+			return this.modeloRepository.buscarModelosPorMarca(codMarca).get();
 		} catch (NoSuchElementException e) {
 			throw new ValidationException(Constants.MARCA_INEXISTENTE);
 		} catch (Exception e) {

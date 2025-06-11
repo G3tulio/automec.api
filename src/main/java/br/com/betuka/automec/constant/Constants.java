@@ -77,7 +77,7 @@ public class Constants {
 	 */
 	public static final String RECURSO_INEXISTENTE = "Recurso inexistente.";
 	public static final String RECURSO_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
-	public static final String RECURSO_SITUACAO_INEXISTENTE = "Situação não condiz com o esperado: (A, c).";
+	public static final String RECURSO_SITUACAO_INEXISTENTE = "Situação não condiz com o esperado: (A, C).";
 	public static final String RECURSO_JA_CADASTRADO = "Recurso já cadastrado.";
 	
 	/*

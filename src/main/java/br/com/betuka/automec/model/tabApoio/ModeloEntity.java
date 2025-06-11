@@ -96,8 +96,6 @@ public class ModeloEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "ModeloEntity [codModelo=" + codModelo + 
-				", desModelo=" + desModelo + 
-				", marca=" + marca.toString() + "]";
+		return "ModeloEntity [codModelo=" + codModelo + ", desModelo=" + desModelo + ", marca=" + marca.toString() + "]";
 	}
 }

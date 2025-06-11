@@ -56,9 +56,9 @@ public class MarcaService {
 		this.marcaRepository.save( new MarcaEntity(marcaDTO) );
 	}
     
-    private boolean existeMarca(int codMarca) throws ValidationException, Exception {
+    private boolean existeModeloMarca(int codMarca) throws ValidationException, Exception {
     	try {
-    		return this.marcaRepository.existeMarca(codMarca);
+    		return this.marcaRepository.existeModeloMarca(codMarca);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
@@ -67,7 +67,7 @@ public class MarcaService {
 	public void deletar(int codMarca) throws ValidationException, Exception {
 		this.pesquisarCodigo(codMarca); // Caso não encontre levanta uma ValidationException
 		
-		if (this.existeMarca(codMarca)) {
+		if (this.existeModeloMarca(codMarca)) {
 			throw new ValidationException(Constants.MARCA_UTILIZADA);
 		}
 		
@@ -98,9 +98,9 @@ public class MarcaService {
 		}
 	}
 	
-	public List<MarcaDTO> pesquisarPorDescricao(String desMarca) throws ValidationException, Exception {
+	public List<MarcaDTO> buscarDescricao(String desMarca) throws ValidationException, Exception {
 		try {
-			return MarcaDTO.toList(this.marcaRepository.pesquisarPorDescricao(desMarca));
+			return MarcaDTO.toList(this.marcaRepository.buscarDescricao(desMarca));
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

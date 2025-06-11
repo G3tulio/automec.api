@@ -43,7 +43,7 @@ public class ModeloController {
 	@PostMapping(value = "adicionar")
 	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody ModeloDTO modeloDTO) {
 		try {
-			this.modeloService.adicionar(modeloDTO);
+			this.modeloService.gravar(modeloDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -59,7 +59,7 @@ public class ModeloController {
 	@PutMapping(value = "atualizar")
 	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody ModeloDTO modeloDTO) {
 		try {
-			this.modeloService.atualizar(modeloDTO);
+			this.modeloService.gravar(modeloDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -120,10 +120,10 @@ public class ModeloController {
 	    }
 	}
 	
-	@GetMapping(value = "listarModelosMarca/{codMarca}")
-	public ResponseEntity<ResponseDTO<List<VWModelosMarcaDTO>>> listarModelosMarca(@PathVariable("codMarca") int pCodMarca) {
+	@GetMapping(value = "buscarModelosPorMarca/{codMarca}")
+	public ResponseEntity<ResponseDTO<List<VWModelosMarcaDTO>>> buscarModelosPorMarca(@PathVariable("codMarca") int pCodMarca) {
 		try {
-			List<VWModelosMarcaDTO> lista = this.modeloService.listarModelosMarca(pCodMarca);
+			List<VWModelosMarcaDTO> lista = this.modeloService.buscarModelosPorMarca(pCodMarca);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

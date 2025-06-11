@@ -11,13 +11,13 @@ import br.com.betuka.automec.model.tabAcesso.PerfilEntity;
 
 public interface PerfilRepository extends JpaRepository<PerfilEntity, Integer> {
 	
-	@Query("select p FROM PerfilEntity p where p.desPerfil = :desPerfil")
+	@Query("select p from PerfilEntity p where p.desPerfil = :desPerfil")
 	Optional<PerfilEntity> pesquisarDescricao(@Param("desPerfil") String desPerfil);
 	
 	@Query("select p from PerfilEntity p where p.desPerfil like concat('%', :desPerfil, '%')")
-	List<PerfilEntity> pesquisarPorDescricao(@Param("desPerfil") String desPerfil);
+	List<PerfilEntity> buscarDescricao(@Param("desPerfil") String desPerfil);
 	
-	@Query("select count(u) > 0 from UsuarioEntity u where u.perfil.codPerfil = :codPerfil")
-	boolean existePerfil(@Param("codPerfil") int codPerfil);
+	@Query("select (count(u) > 0) as existe from UsuarioEntity u where u.perfil.codPerfil = :codPerfil")
+	boolean existePerfilUsuario(@Param("codPerfil") int codPerfil);
 	
 }

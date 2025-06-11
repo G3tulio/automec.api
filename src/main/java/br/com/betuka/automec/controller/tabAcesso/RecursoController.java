@@ -119,10 +119,10 @@ public class RecursoController {
 	    }
     } 
 
-    @GetMapping(value = "pesquisarPorDescricao/{desRecurso}")
-    public ResponseEntity<ResponseDTO<List<RecursoDTO>>> pesquisarPorDescricao(@PathVariable("desRecurso") String pDesRecurso ) {
+    @GetMapping(value = "buscarDescricao/{desRecurso}")
+    public ResponseEntity<ResponseDTO<List<RecursoDTO>>> buscarDescricao(@PathVariable("desRecurso") String pDesRecurso ) {
 		try {
-			List<RecursoDTO> lista = this.recursoService.pesquisarPorDescricao(pDesRecurso);
+			List<RecursoDTO> lista = this.recursoService.buscarDescricao(pDesRecurso);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

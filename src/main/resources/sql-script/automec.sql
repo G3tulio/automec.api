@@ -164,78 +164,289 @@ create table automec_desenv.mecanico (
 	nro_celular varchar(15) not null
 );
 
--- automec_desenv.vw_modelos_marca definição
+-- automec_desenv.vw_modelos_marca
 
 select v.*, m.des_modelo from automec_desenv.veiculo v
 inner join automec_desenv.modelo m on m.cod_modelo = v.cod_modelo
+
+-- automec_desenv.veiculo
 
 select * from automec_desenv.veiculo v;
 
 insert into automec_desenv.veiculo (cod_modelo, des_cor, nro_placa, ano_veiculo, des_motor, qtd_km_veiculo, qtd_km_dia)
 values
-(31, 'Prata', 'AAA1B23', '2020', '1.0 Flex', 44000, 50),
-(32, 'Branco', 'BBB2C34', '2019', '1.6 Flex', 53000, 48),
-(33, 'Preto', 'CCC3D45', '2021', '2.0 Diesel', 36000, 52),
-(34, 'Azul', 'DDD4E56', '2022', '1.4 Flex', 25000, 47),
-(35, 'Vermelho', 'EEE5F67', '2018', '1.0 Flex', 70000, 43),
-(36, 'Cinza', 'FFF6G78', '2023', '1.6 Flex', 13000, 62),
-(37, 'Preto', 'GGG7H89', '2020', '1.4 Flex', 47000, 58),
-(38, 'Verde', 'HHH8I90', '2021', '2.0 Turbo', 32000, 53),
-(39, 'Amarelo', 'III9J01', '2019', '1.0 Flex', 60000, 49),
-(40, 'Branco', 'JJJ0K12', '2023', '1.8 Diesel', 14000, 46),
-(41, 'Prata', 'KKK1L23', '2020', '1.0 Flex', 41000, 56),
-(42, 'Cinza', 'LLL2M34', '2022', '1.6 Flex', 26000, 44),
-(43, 'Vermelho', 'MMM3N45', '2018', '1.4 Flex', 73000, 42),
-(44, 'Preto', 'NNN4O56', '2021', '1.0 Flex', 34000, 51),
-(45, 'Branco', 'OOO5P67', '2019', '1.8 Diesel', 59000, 59),
-(46, 'Azul', 'PPP6Q78', '2023', '1.6 Flex', 12000, 63),
-(47, 'Verde', 'QQQ7R89', '2020', '2.0 Turbo', 46000, 57),
-(48, 'Prata', 'RRR8S90', '2021', '1.0 Flex', 39000, 60),
-(25, 'Branco', 'SSS9T01', '2020', '1.4 Flex', 48000, 54),
-(26, 'Preto', 'TTT0U12', '2022', '2.0 Turbo', 21000, 45),
-(27, 'Cinza', 'UUU1V23', '2023', '1.6 Flex', 17000, 58),
-(28, 'Azul', 'VVV2W34', '2021', '1.4 Flex', 36000, 49),
-(29, 'Vermelho', 'WWW3X45', '2019', '1.0 Flex', 62000, 50),
-(30, 'Branco', 'XXX4Y56', '2020', '1.8 Diesel', 47000, 55),
-(31, 'Preto', 'YYY5Z67', '2022', '1.0 Flex', 24000, 47),
-(32, 'Verde', 'ZZZ6A78', '2023', '1.4 Flex', 16000, 52),
-(33, 'Amarelo', 'A1B2C3D', '2021', '1.6 Flex', 33000, 46),
-(34, 'Branco', 'B4C5D6E', '2019', '1.0 Flex', 64000, 40),
-(35, 'Prata', 'C7D8E9F', '2020', '2.0 Turbo', 45000, 61),
-(36, 'Azul', 'D0E1F2G', '2018', '1.8 Diesel', 71000, 39);
-
-insert into automec_desenv.veiculo (cod_modelo, des_cor, nro_placa, ano_veiculo, des_motor, qtd_km_veiculo, qtd_km_dia)
-values 
-(25, 'Prata', 'ABC1A23', '2020', '1.0 Flex', 45000, 60),
-(26, 'Preto', 'DEF2B34', '2019', '1.6 Flex', 52000, 55),
-(27, 'Branco', 'GHI3C45', '2021', '1.8 Diesel', 31000, 50),
-(28, 'Vermelho', 'JKL4D56', '2022', '2.0 Turbo', 22000, 45),
-(29, 'Azul', 'MNO5E67', '2018', '1.0 Flex', 67000, 40),
-(30, 'Cinza', 'PQR6F78', '2023', '1.6 Flex', 15000, 65),
-(31, 'Verde', 'STU7G89', '2020', '1.0 Flex', 49000, 55),
-(32, 'Amarelo', 'VWX8H90', '2021', '2.0 Turbo', 33000, 60),
-(33, 'Branco', 'YZA9I01', '2019', '1.4 Flex', 58000, 50),
-(34, 'Preto', 'BCD0J12', '2023', '1.8 Diesel', 12000, 40),
-(35, 'Prata', 'EFG1K23', '2020', '1.0 Flex', 47000, 55),
-(36, 'Cinza', 'HIJ2L34', '2022', '2.0 Turbo', 25000, 45),
-(37, 'Vermelho', 'KLM3M45', '2018', '1.6 Flex', 69000, 40),
-(38, 'Preto', 'NOP4N56', '2021', '1.4 Flex', 35000, 50),
-(39, 'Branco', 'QRS5O67', '2019', '1.0 Flex', 62000, 60),
-(40, 'Prata', 'TUV6P78', '2023', '1.8 Diesel', 14000, 55),
-(41, 'Azul', 'WXY7Q89', '2020', '2.0 Turbo', 43000, 65),
-(42, 'Verde', 'ZAB8R90', '2021', '1.0 Flex', 37000, 60),
-(43, 'Preto', 'CDE9S01', '2022', '1.6 Flex', 28000, 55),
-(44, 'Branco', 'FGH0T12', '2019', '1.0 Flex', 59000, 45),
-(45, 'Vermelho', 'IJK1U23', '2020', '2.0 Turbo', 46000, 50),
-(46, 'Cinza', 'LMN2V34', '2018', '1.4 Flex', 71000, 35),
-(47, 'Preto', 'OPQ3W45', '2023', '1.8 Diesel', 13000, 60),
-(48, 'Prata', 'RST4X56', '2021', '1.6 Flex', 39000, 55),
-(25, 'Branco', 'UVW5Y67', '2020', '1.0 Flex', 47000, 60),
-(26, 'Preto', 'XYZ6Z78', '2022', '2.0 Turbo', 22000, 45),
-(27, 'Azul', 'ABC7A89', '2023', '1.4 Flex', 16000, 55),
-(28, 'Cinza', 'DEF8B90', '2021', '1.6 Flex', 34000, 50),
-(29, 'Prata', 'GHI9C01', '2019', '1.0 Flex', 64000, 40),
-(30, 'Branco', 'JKL0D12', '2020', '1.8 Diesel', 48000, 65);
+(68, 'Branco', 'ED6-B5FB', 2015, '2.0', 42321, 64),
+(68, 'Cinza', '0B7-442F', 2020, '1.6', 50443, 70),
+(68, 'Azul', '60D-A5C0', 2015, '1.0', 80286, 41),
+(68, 'Cinza', '530-63D6', 2020, 'Turbo 1.0', 49457, 30),
+(67, 'Vermelho', 'B64-B25D', 2020, '2.0', 62689, 92),
+(67, 'Vermelho', 'B3B-114A', 2022, '2.0', 67368, 91),
+(67, 'Vermelho', '61F-4CD2', 2023, '2.0', 76184, 83),
+(67, 'Vermelho', 'FCF-E593', 2022, 'Turbo 1.0', 41799, 99),
+(66, 'Azul', 'FDA-5A80', 2020, 'Turbo 1.0', 18806, 45),
+(66, 'Prata', '72C-2FE9', 2021, '2.0', 71182, 100),
+(66, 'Prata', '273-53CD', 2019, '2.0', 84301, 37),
+(66, 'Branco', '20A-A5CC', 2021, 'Turbo 1.0', 81396, 60),
+(65, 'Preto', '284-5483', 2022, 'Turbo 1.6', 49476, 69),
+(65, 'Vermelho', '8AF-AD97', 2023, 'Turbo 1.6', 43092, 71),
+(65, 'Cinza', '2C4-CF98', 2021, '1.6', 23779, 97),
+(65, 'Vermelho', '14F-B114', 2022, 'Turbo 1.6', 94561, 64),
+(64, 'Branco', '17E-38BB', 2018, '1.3', 90925, 65),
+(64, 'Prata', 'A24-35EA', 2015, '2.0', 80110, 55),
+(64, 'Vermelho', '771-9505', 2023, '2.0', 24920, 91),
+(64, 'Preto', 'FD9-8B45', 2016, '1.6', 37428, 56),
+(63, 'Preto', 'C0E-9446', 2022, 'Turbo 1.0', 104570, 70),
+(63, 'Azul', '8F6-0562', 2016, 'Turbo 1.0', 27851, 41),
+(63, 'Prata', 'BE0-0895', 2020, '2.0', 74207, 95),
+(63, 'Prata', '379-5938', 2018, '2.0', 110918, 92),
+(62, 'Vermelho', '7F5-96A5', 2018, '1.0', 33518, 88),
+(62, 'Azul', '87C-953F', 2015, 'Turbo 1.6', 39662, 36),
+(62, 'Vermelho', 'B9D-198B', 2019, '1.6', 111675, 41),
+(62, 'Cinza', '76D-1E0D', 2015, '1.0', 68921, 58),
+(61, 'Branco', '56E-8F73', 2020, 'Turbo 1.0', 119536, 91),
+(61, 'Branco', '404-A99B', 2020, 'Turbo 1.6', 42992, 70),
+(61, 'Branco', '14E-0852', 2018, '1.6', 86573, 33),
+(61, 'Azul', '2DA-7EF8', 2016, '1.3', 57250, 35),
+(60, 'Vermelho', 'A67-7856', 2021, '2.0', 79746, 53),
+(60, 'Cinza', '0CB-9EBB', 2022, '2.0', 55558, 87),
+(60, 'Prata', 'B44-B78F', 2023, '1.6', 62362, 79),
+(60, 'Prata', '068-D371', 2016, '1.6', 106120, 39),
+(59, 'Cinza', '5D6-76F9', 2015, '1.3', 40562, 77),
+(59, 'Cinza', '30D-BE81', 2015, 'Turbo 1.0', 22357, 72),
+(59, 'Preto', '8C7-F420', 2016, 'Turbo 1.6', 20496, 51),
+(59, 'Preto', '707-EC29', 2021, 'Turbo 1.0', 84439, 45),
+(58, 'Preto', '407-303D', 2023, 'Turbo 1.6', 80552, 54),
+(58, 'Prata', 'CBA-A636', 2023, '2.0', 29336, 59),
+(58, 'Branco', 'CC9-4515', 2021, '1.0', 25704, 73),
+(58, 'Preto', '639-F629', 2019, 'Turbo 1.6', 109545, 67),
+(57, 'Azul', '1CA-F576', 2016, '1.3', 82566, 71),
+(57, 'Azul', 'ACC-C6C5', 2015, '1.6', 36473, 63),
+(57, 'Vermelho', 'A80-EF40', 2018, 'Turbo 1.0', 85298, 37),
+(57, 'Preto', '9F4-79E9', 2017, '2.0', 51109, 99),
+(56, 'Vermelho', '329-FAA7', 2016, 'Turbo 1.0', 92953, 49),
+(56, 'Prata', 'B3A-87DF', 2016, 'Turbo 1.6', 81323, 86),
+(56, 'Prata', '289-3642', 2023, '1.0', 36627, 48),
+(56, 'Vermelho', '8A7-D0C0', 2019, '2.0', 89043, 88),
+(55, 'Branco', 'DB4-622B', 2022, '1.0', 24614, 30),
+(55, 'Branco', '79A-376D', 2015, '2.0', 44629, 67),
+(55, 'Prata', '015-1FB8', 2015, '1.0', 63592, 81),
+(55, 'Vermelho', '79A-5687', 2015, 'Turbo 1.0', 91722, 98),
+(54, 'Preto', 'C9C-C028', 2018, '1.0', 72598, 58),
+(54, 'Prata', 'DDC-25E1', 2023, 'Turbo 1.6', 40036, 53),
+(54, 'Vermelho', '202-16DE', 2019, '1.3', 25036, 46),
+(54, 'Azul', 'C9B-B0F9', 2023, '1.0', 74542, 88),
+(53, 'Cinza', '072-E7BC', 2020, '1.6', 30932, 97),
+(53, 'Vermelho', '470-7945', 2015, '1.0', 86745, 57),
+(53, 'Cinza', '7AF-D8C8', 2016, 'Turbo 1.6', 74673, 97),
+(53, 'Vermelho', 'E72-505C', 2020, '1.6', 115430, 31),
+(52, 'Preto', '4A0-AF4A', 2016, '1.3', 119660, 80),
+(52, 'Cinza', '3AB-10BA', 2018, '1.3', 56460, 71),
+(52, 'Cinza', '173-C867', 2019, 'Turbo 1.6', 12868, 46),
+(52, 'Prata', 'D63-024F', 2018, '1.6', 110053, 61),
+(51, 'Branco', '19E-5B2B', 2016, '1.6', 92096, 88),
+(51, 'Cinza', 'E98-BFD7', 2023, 'Turbo 1.6', 26509, 56),
+(51, 'Cinza', 'F1F-395F', 2023, '1.0', 31528, 43),
+(51, 'Preto', '3FC-4A03', 2023, 'Turbo 1.0', 111671, 52),
+(50, 'Prata', '412-FA43', 2016, '2.0', 13054, 99),
+(50, 'Azul', '77D-5BA2', 2019, 'Turbo 1.0', 87528, 37),
+(50, 'Preto', '926-9214', 2016, '2.0', 64501, 72),
+(50, 'Cinza', '017-44B1', 2020, '1.0', 63212, 78),
+(49, 'Branco', '1CC-9DCD', 2015, 'Turbo 1.6', 48544, 77),
+(49, 'Vermelho', 'B10-5644', 2019, 'Turbo 1.6', 65816, 54),
+(49, 'Cinza', '300-DC72', 2015, 'Turbo 1.6', 112753, 64),
+(49, 'Branco', 'B6C-B82C', 2020, '1.6', 84432, 48),
+(48, 'Prata', 'A5F-B336', 2017, 'Turbo 1.6', 35422, 30),
+(48, 'Azul', '0A1-3260', 2015, '1.0', 118529, 72),
+(48, 'Cinza', 'D09-0E82', 2018, 'Turbo 1.6', 58270, 44),
+(48, 'Prata', '758-B95F', 2015, 'Turbo 1.0', 55515, 33),
+(47, 'Vermelho', '37C-009D', 2017, '2.0', 65289, 93),
+(47, 'Prata', '3DA-81B9', 2019, '1.6', 85091, 93),
+(47, 'Cinza', 'D89-8533', 2023, '2.0', 101520, 63),
+(47, 'Preto', '0D1-5B72', 2022, 'Turbo 1.0', 30396, 72),
+(46, 'Vermelho', 'D6F-6855', 2020, 'Turbo 1.6', 76690, 63),
+(46, 'Prata', 'C16-9081', 2020, 'Turbo 1.0', 53923, 44),
+(46, 'Prata', 'CA0-5BC1', 2022, '1.0', 58751, 58),
+(46, 'Vermelho', '411-BC62', 2023, '1.6', 39169, 81),
+(45, 'Preto', 'C40-0B1F', 2017, 'Turbo 1.6', 115163, 49),
+(45, 'Vermelho', 'DD2-272A', 2023, 'Turbo 1.6', 43917, 94),
+(45, 'Vermelho', 'E01-766C', 2022, '2.0', 86426, 100),
+(45, 'Preto', 'FC2-A257', 2019, 'Turbo 1.0', 51967, 60),
+(44, 'Branco', 'C2C-E929', 2015, 'Turbo 1.0', 94996, 56),
+(44, 'Cinza', '33E-97F4', 2015, 'Turbo 1.6', 50000, 75),
+(44, 'Azul', 'F94-0893', 2023, '1.6', 63575, 99),
+(44, 'Branco', '602-6AB6', 2018, '1.6', 53231, 99),
+(43, 'Vermelho', '5F6-55C8', 2016, '1.6', 77229, 84),
+(43, 'Prata', 'BD4-0A36', 2018, '2.0', 92373, 94),
+(43, 'Cinza', 'ABC-07FF', 2016, '1.0', 71268, 39),
+(43, 'Prata', '102-A135', 2019, '1.0', 42194, 41),
+(42, 'Preto', 'C26-2B6D', 2021, '1.0', 28163, 30),
+(42, 'Prata', '0F4-A715', 2019, 'Turbo 1.6', 22990, 93),
+(42, 'Azul', 'B5C-A683', 2022, 'Turbo 1.6', 22435, 100),
+(42, 'Cinza', '9A9-3FEA', 2021, 'Turbo 1.6', 28341, 86),
+(41, 'Branco', 'B40-A7B4', 2017, '1.3', 52416, 32),
+(41, 'Cinza', '19E-2D4A', 2023, '1.3', 95050, 45),
+(41, 'Vermelho', 'D95-B67C', 2017, '1.0', 119582, 36),
+(41, 'Cinza', '2C3-624B', 2018, '2.0', 49923, 84),
+(40, 'Cinza', '2C3-06D2', 2017, 'Turbo 1.6', 103956, 66),
+(40, 'Preto', '69F-005F', 2020, '1.0', 14993, 79),
+(40, 'Cinza', '199-4790', 2023, '1.0', 79936, 88),
+(40, 'Preto', 'F9A-AC18', 2016, '1.3', 24909, 68),
+(39, 'Branco', '4DE-0760', 2018, '2.0', 100494, 62),
+(39, 'Preto', 'D34-16B2', 2023, 'Turbo 1.6', 54087, 78),
+(39, 'Azul', '186-DC68', 2022, '1.3', 102474, 54),
+(39, 'Branco', '88E-DD03', 2017, 'Turbo 1.6', 119971, 86),
+(38, 'Vermelho', '3C8-FAA8', 2018, '1.6', 22318, 87),
+(38, 'Cinza', 'F9A-4CB0', 2019, 'Turbo 1.6', 104012, 60),
+(38, 'Vermelho', '0D0-518D', 2023, '1.3', 87513, 67),
+(38, 'Cinza', 'CDD-5154', 2019, '1.6', 103758, 37),
+(37, 'Preto', 'CE0-9A91', 2017, '1.0', 111374, 76),
+(37, 'Branco', '842-1B58', 2021, '1.0', 57336, 63),
+(37, 'Cinza', '94D-48B6', 2017, 'Turbo 1.0', 111193, 33),
+(37, 'Branco', 'E50-15D8', 2020, '1.3', 100279, 33),
+(36, 'Cinza', 'A7F-4167', 2023, '1.6', 43460, 52),
+(36, 'Azul', '76C-7F81', 2017, '2.0', 119889, 40),
+(36, 'Vermelho', '214-BE14', 2023, '1.0', 34440, 91),
+(36, 'Preto', '17F-3D9A', 2015, '1.0', 100130, 96),
+(35, 'Cinza', 'C9E-F5EC', 2019, 'Turbo 1.6', 38687, 37),
+(35, 'Prata', '833-444F', 2020, '1.0', 68316, 67),
+(35, 'Preto', 'FD4-6DAA', 2020, 'Turbo 1.6', 10842, 87),
+(35, 'Branco', 'BCD-522B', 2021, '1.3', 112533, 60),
+(34, 'Cinza', '34F-1A43', 2015, 'Turbo 1.0', 62941, 51),
+(34, 'Cinza', '06D-BD69', 2019, '1.0', 26212, 61),
+(34, 'Azul', 'AB0-CF97', 2021, 'Turbo 1.0', 62136, 40),
+(34, 'Azul', '899-FA6E', 2020, '2.0', 54353, 56),
+(33, 'Branco', 'B93-65A8', 2018, '1.6', 85138, 62),
+(33, 'Branco', '9EA-4FD2', 2020, 'Turbo 1.0', 67579, 48),
+(33, 'Prata', 'BB8-7988', 2018, '2.0', 90074, 93),
+(33, 'Prata', 'AF8-0160', 2021, '1.0', 118628, 49),
+(32, 'Preto', '07D-DDDA', 2017, '1.0', 115392, 31),
+(32, 'Branco', '385-D692', 2023, '1.6', 26190, 82),
+(32, 'Cinza', '931-3071', 2016, 'Turbo 1.0', 101691, 71),
+(32, 'Azul', 'BDF-A187', 2018, 'Turbo 1.6', 35668, 96),
+(31, 'Branco', 'D74-6DFE', 2019, '2.0', 110004, 100),
+(31, 'Prata', 'B49-480B', 2016, '1.3', 107949, 80),
+(31, 'Cinza', 'D9D-B178', 2015, '1.0', 43627, 30),
+(31, 'Azul', '318-6FD8', 2022, '1.3', 62016, 85),
+(30, 'Preto', '509-4095', 2018, 'Turbo 1.0', 33396, 65),
+(30, 'Vermelho', 'DE9-270B', 2020, '1.3', 105784, 47),
+(30, 'Vermelho', 'EE5-4CE2', 2016, '1.0', 101869, 94),
+(30, 'Cinza', 'B4E-9CBA', 2015, '2.0', 23919, 55),
+(29, 'Prata', '1FD-CD55', 2015, 'Turbo 1.0', 103551, 47),
+(29, 'Cinza', '05D-EEA2', 2017, 'Turbo 1.0', 33502, 100),
+(29, 'Cinza', '8D1-961C', 2022, '1.0', 47564, 53),
+(29, 'Vermelho', '7D6-C8FD', 2019, '1.3', 14409, 88),
+(28, 'Vermelho', 'F84-0D97', 2022, '1.6', 29248, 64),
+(28, 'Azul', '9C8-58B8', 2023, '1.3', 47704, 96),
+(28, 'Azul', '94C-D081', 2015, '1.3', 11312, 48),
+(28, 'Preto', '701-3E57', 2019, '2.0', 107582, 48),
+(27, 'Prata', '8E3-11B8', 2018, 'Turbo 1.6', 89838, 69),
+(27, 'Cinza', 'F65-CD7A', 2016, '1.3', 73501, 75),
+(27, 'Branco', 'E4C-E81E', 2023, 'Turbo 1.6', 79444, 44),
+(27, 'Preto', 'CA4-35BA', 2019, '1.3', 24887, 83),
+(26, 'Cinza', 'EAC-4A9D', 2015, '1.0', 93188, 93),
+(26, 'Azul', 'CC6-307E', 2020, 'Turbo 1.0', 29182, 31),
+(26, 'Vermelho', 'C1A-FB0E', 2023, '1.0', 76081, 30),
+(26, 'Prata', '722-E477', 2016, '1.3', 99810, 83),
+(25, 'Branco', '0BD-FE3D', 2016, 'Turbo 1.0', 51028, 94),
+(25, 'Vermelho', '9E6-E1AF', 2022, '2.0', 82796, 73),
+(25, 'Azul', '154-007D', 2023, 'Turbo 1.0', 101861, 58),
+(25, 'Cinza', 'EDF-9ECE', 2019, '1.3', 54721, 36),
+(24, 'Cinza', '407-BA0E', 2021, 'Turbo 1.0', 16606, 55),
+(24, 'Cinza', '837-7FCA', 2021, '1.0', 52406, 44),
+(24, 'Preto', '097-A59E', 2018, '2.0', 96884, 49),
+(24, 'Vermelho', '9CF-A24E', 2023, '1.0', 112427, 73),
+(23, 'Vermelho', '73D-529E', 2019, 'Turbo 1.0', 74687, 90),
+(23, 'Vermelho', '4E2-151C', 2023, '1.0', 67535, 76),
+(23, 'Vermelho', 'A6C-0969', 2020, 'Turbo 1.6', 32011, 78),
+(23, 'Branco', '311-151F', 2018, '1.3', 42337, 77),
+(22, 'Cinza', '4DD-1902', 2021, 'Turbo 1.6', 35242, 63),
+(22, 'Cinza', 'F7A-087A', 2020, 'Turbo 1.6', 79882, 88),
+(22, 'Prata', 'FE4-A8BA', 2015, '1.6', 60089, 56),
+(22, 'Prata', '30D-5D1E', 2017, 'Turbo 1.0', 17775, 63),
+(21, 'Vermelho', 'A13-B914', 2022, '1.3', 96962, 69),
+(21, 'Azul', '79B-2175', 2021, 'Turbo 1.6', 87703, 50),
+(21, 'Cinza', '962-84AB', 2016, '1.6', 92754, 56),
+(21, 'Branco', 'D56-C641', 2019, '1.0', 99395, 49),
+(20, 'Branco', '67C-456A', 2017, '1.6', 53523, 79),
+(20, 'Prata', '90A-9AB2', 2015, '1.6', 57928, 73),
+(20, 'Preto', '961-7BE0', 2019, '1.0', 29785, 74),
+(20, 'Prata', '466-C7AD', 2018, '1.3', 103509, 91),
+(19, 'Azul', '6DA-A703', 2018, '1.0', 32567, 70),
+(19, 'Branco', '506-2B1C', 2016, 'Turbo 1.6', 101073, 70),
+(19, 'Azul', 'E44-AE13', 2021, '1.0', 46129, 65),
+(19, 'Prata', 'BD9-3D7B', 2017, '1.6', 71895, 70),
+(18, 'Azul', '257-AE96', 2017, '2.0', 70846, 60),
+(18, 'Branco', '9B9-8EA1', 2021, 'Turbo 1.0', 90975, 73),
+(18, 'Azul', '15B-EC8C', 2018, 'Turbo 1.0', 54362, 64),
+(18, 'Azul', '4EA-96AB', 2023, '1.6', 103316, 91),
+(17, 'Preto', '409-2A0F', 2018, 'Turbo 1.0', 71723, 72),
+(17, 'Azul', '6FD-A04A', 2016, '2.0', 14479, 77),
+(17, 'Azul', '089-D3FB', 2022, '2.0', 64355, 91),
+(17, 'Branco', '20A-7CFC', 2017, '1.6', 65590, 71),
+(16, 'Azul', 'B33-09A9', 2023, 'Turbo 1.0', 48072, 97),
+(16, 'Preto', '1B1-276E', 2021, '1.6', 31220, 87),
+(16, 'Azul', '418-B5D6', 2020, '1.6', 55358, 42),
+(16, 'Cinza', '238-F382', 2016, '1.0', 110786, 46),
+(15, 'Vermelho', '999-8789', 2018, 'Turbo 1.0', 75694, 49),
+(15, 'Prata', 'A7D-EB71', 2023, '1.3', 21739, 88),
+(15, 'Preto', '3A6-D69D', 2021, '2.0', 29266, 76),
+(15, 'Branco', '4A6-858C', 2022, '1.3', 26232, 98),
+(14, 'Preto', '324-BF53', 2019, 'Turbo 1.0', 21437, 68),
+(14, 'Vermelho', '3EF-74E4', 2021, 'Turbo 1.0', 112478, 84),
+(14, 'Azul', 'ED4-F55E', 2020, 'Turbo 1.0', 29517, 47),
+(14, 'Azul', '2A5-7993', 2017, '1.6', 108850, 43),
+(13, 'Cinza', '9D9-E08E', 2021, '1.3', 105030, 83),
+(13, 'Preto', '575-0E2F', 2021, '1.0', 100156, 70),
+(13, 'Prata', '0DA-2A38', 2016, '1.3', 21434, 64),
+(13, 'Prata', '653-5CF4', 2018, '1.0', 116910, 81),
+(12, 'Azul', '49B-38B1', 2019, 'Turbo 1.6', 65314, 90),
+(12, 'Azul', '7EF-BEE3', 2021, '2.0', 23450, 86),
+(12, 'Branco', '709-9606', 2016, '2.0', 44362, 78),
+(12, 'Preto', 'B96-ADB0', 2017, 'Turbo 1.6', 32922, 60),
+(11, 'Preto', '5BB-B7CB', 2018, '2.0', 105492, 32),
+(11, 'Prata', '377-2066', 2022, 'Turbo 1.6', 91082, 36),
+(11, 'Prata', '8E8-A248', 2023, '2.0', 19235, 56),
+(11, 'Azul', '5FE-C594', 2019, '1.3', 94554, 38),
+(10, 'Preto', '981-61E4', 2016, '1.6', 43113, 81),
+(10, 'Azul', 'EEC-35FD', 2018, 'Turbo 1.0', 70207, 82),
+(10, 'Cinza', '357-8DB7', 2016, '1.6', 98806, 73),
+(10, 'Cinza', 'B7B-7B48', 2020, '1.0', 85542, 95),
+(9, 'Prata', 'F5F-E4B8', 2018, 'Turbo 1.6', 36975, 79),
+(9, 'Cinza', '750-DB58', 2019, '2.0', 22041, 65),
+(9, 'Preto', 'DAD-735C', 2022, 'Turbo 1.6', 33143, 85),
+(9, 'Prata', 'D8A-BCE3', 2020, 'Turbo 1.6', 27185, 75),
+(8, 'Vermelho', '942-06E2', 2015, '1.6', 93895, 36),
+(8, 'Prata', '64D-9A29', 2018, 'Turbo 1.0', 84913, 54),
+(8, 'Prata', '590-D584', 2023, '1.3', 67982, 72),
+(8, 'Preto', '9AE-30F1', 2016, '1.0', 10640, 61),
+(7, 'Cinza', '308-5E65', 2017, '2.0', 76685, 94),
+(7, 'Cinza', '786-1BBD', 2022, '1.6', 92385, 51),
+(7, 'Branco', '9CC-45A7', 2017, '1.0', 62138, 83),
+(7, 'Cinza', 'B74-8C52', 2019, '1.6', 37626, 99),
+(6, 'Cinza', '66A-34EC', 2023, '1.3', 46239, 69),
+(6, 'Branco', '6D2-3E44', 2016, 'Turbo 1.0', 108397, 51),
+(6, 'Azul', 'C1B-82D5', 2016, '1.3', 82132, 61),
+(6, 'Cinza', '410-C780', 2016, 'Turbo 1.6', 58394, 79),
+(5, 'Branco', 'A53-B79B', 2016, 'Turbo 1.0', 39658, 48),
+(5, 'Azul', '3FA-7425', 2015, '1.0', 53579, 92),
+(5, 'Prata', 'FDB-2325', 2020, '1.0', 24128, 42),
+(5, 'Vermelho', 'E63-A64B', 2017, 'Turbo 1.6', 97486, 75),
+(4, 'Branco', '734-0860', 2016, '1.3', 62715, 40),
+(4, 'Cinza', '1EA-BD20', 2021, '1.3', 72589, 66),
+(4, 'Branco', '20E-8CCE', 2021, 'Turbo 1.6', 94193, 60),
+(4, 'Preto', '410-BF21', 2019, '1.0', 76902, 66),
+(3, 'Branco', 'C2B-82EA', 2023, '1.6', 29210, 56),
+(3, 'Prata', 'D23-CFF5', 2020, '2.0', 116770, 88),
+(3, 'Branco', '76B-F88C', 2015, '2.0', 19097, 82),
+(3, 'Prata', 'B16-B79B', 2016, '2.0', 115372, 78),
+(2, 'Prata', '48C-550D', 2016, '1.6', 108460, 88),
+(2, 'Preto', 'C8C-ACE9', 2020, '1.6', 107062, 39),
+(2, 'Azul', 'A82-6D0D', 2021, '1.6', 26485, 99),
+(2, 'Azul', 'B8D-D4F3', 2022, 'Turbo 1.6', 89641, 54),
+(1, 'Vermelho', 'A1A-7C82', 2016, '1.0', 83964, 78),
+(1, 'Vermelho', 'A38-8121', 2016, '1.6', 12354, 94),
+(1, 'Preto', '345-FAD6', 2015, '1.6', 114985, 52),
+(1, 'Azul', 'AD6-4E40', 2019, 'Turbo 1.0', 16796, 56);
 
 create table automec_desenv.veiculo (
   cod_veiculo int(11) not null auto_increment,
@@ -246,22 +457,22 @@ create table automec_desenv.veiculo (
   des_motor varchar(25) null,
   qtd_km_veiculo int(10) not null default 0,
   qtd_km_dia int(10) not null default 0,
-  dta_cadastro date not null default current_date,
+  dta_cadastro date not null default curdate(),
   primary key (cod_veiculo),
   unique index veiculo_nro_placa (nro_placa),
   constraint veiculo_cod_modelo_fk foreign key (cod_modelo) references modelo (cod_modelo)
 );
 
--- automec_desenv.vw_modelos_marca definição
+-- automec_desenv.vw_modelos_marca
 
 select vmm.cod_modelo, vmm.des_modelo
   from automec_desenv.vw_modelos_marca vmm 
  where cod_marca = 1;
 
 select * from automec_desenv.vw_modelos_marca vmm 
- where cod_marca = 4;
+ where cod_marca = 1;
 
-create view automec_desenv.vw_modelos_marca as
+create or replace view automec_desenv.vw_modelos_marca as
 	select modelo.cod_modelo, modelo.des_modelo, marca.cod_marca
 	  from automec_desenv.modelo as modelo
 	  inner join automec_desenv.marca as marca on marca.cod_marca = modelo.cod_marca
@@ -272,35 +483,113 @@ create view automec_desenv.vw_modelos_marca as
 --   inner join automec_desenv.marca as marca on marca.cod_marca = modelo.cod_marca
 --   order by marca.des_marca;
 
--- automec_desenv.modelo definição
+-- automec_desenv.modelo
 
 select * from automec_desenv.modelo m order by des_modelo desc;
 
-insert into automec_desenv.modelo (des_modelo,cod_marca) 
-values
-	 ('Gol G3',4),
-	 ('HB20 Sensi',3),
-	 ('HB20 SX',3),
-	 ('Siena',1),
-	 ('Toro',1),
-	 ('Golf',4),
-	 ('Estrada',1),
-	 ('Creta',3),
-	 ('Brasilia',4),
-	 ('Monza',2),
-	 ('Santana',4),
-	 ('Uno Mille',1),
-	 ('Fiesta',2),
-	 ('KA',2),
-	 ('Onix',5),
-	 ('Corolla',6),
-	 ('GR Corolla',6),
-	 ('SW 4',6),
-	 ('Argo',1),
-	 ('Cronos',6),
-	 ('Doblo',1),
-	 ('Fiorino',1),
-	 ('Mobi',1);
+insert into modelo (des_modelo, cod_marca) 
+values 
+-- Fiat
+('Argo', 1),
+('Cronos', 1),
+('Pulse', 1),
+('Toro', 1),
+
+-- Hyundai
+('HB20', 2),
+('Creta', 2),
+('Tucson', 2),
+('Santa Fe', 2),
+
+-- Volkswagen
+('Polo', 3),
+('T-Cross', 3),
+('Nivus', 3),
+('Virtus', 3),
+
+-- Chevrolet
+('Onix', 4),
+('Tracker', 4),
+('S10', 4),
+('Spin', 4),
+
+-- Honda
+('Civic', 5),
+('City', 5),
+('HR-V', 5),
+('Fit', 5),
+
+-- Nissan
+('Kicks', 6),
+('Versa', 6),
+('Sentra', 6),
+('Frontier', 6),
+
+-- Renault
+('Kwid', 7),
+('Duster', 7),
+('Captur', 7),
+('Sandero', 7),
+
+-- Peugeot
+('208', 8),
+('2008', 8),
+('3008', 8),
+('5008', 8),
+
+-- Citroën
+('C3', 9),
+('C4 Cactus', 9),
+('Aircross', 9),
+('C5 Aircross', 9),
+
+-- Jeep
+('Renegade', 10),
+('Compass', 10),
+('Commander', 10),
+('Wrangler', 10),
+
+-- Mitsubishi
+('L200', 11),
+('Outlander', 11),
+('ASX', 11),
+('Eclipse Cross', 11),
+
+-- Kia
+('Sportage', 12),
+('Seltos', 12),
+('Cerato', 12),
+('Stonic', 12),
+
+-- Mercedes-Benz
+('Classe A', 13),
+('Classe C', 13),
+('GLA', 13),
+('GLC', 13),
+
+-- BMW
+('320i', 14),
+('X1', 14),
+('X3', 14),
+('X5', 14),
+
+-- Audi
+('A3', 15),
+('A4', 15),
+('Q3', 15),
+('Q5', 15),
+
+-- Chery
+('Tiggo 3x', 16),
+('Tiggo 5x', 16),
+('Tiggo 7', 16),
+('Tiggo 8', 16),
+
+-- JAC Motors
+('T40', 17),
+('T50', 17),
+('T60', 17),
+('e-JS1', 17);
 
 create table automec_desenv.modelo (
 	cod_modelo int(11) not null auto_increment,
@@ -311,13 +600,13 @@ create table automec_desenv.modelo (
 	constraint modelo_cod_marca_fk foreign key (cod_marca) references marca(cod_marca);
 );
 
--- automec_desenv.marca definição
+-- automec_desenv.marca
 
 select * from automec_desenv.marca m;
 
 insert into automec_desenv.marca (des_marca)
 values 
-	('Fiat')
+	('Fiat'),
 	('Hyundai'),
 	('Volkswagen'),
 	('Chevrolet'),
@@ -328,23 +617,12 @@ values
 	('Citroën'),
 	('Jeep'),
 	('Mitsubishi'),
-	('Subaru'),
 	('Kia'),
 	('Mercedes-Benz'),
 	('BMW'),
 	('Audi'),
-	('Volvo'),
-	('Land Rover'),
-	('Porsche'),
 	('Chery'),
-	('JAC Motors'),
-	('Lifan'),
-	('Geely'),
-	('Bugatti'),
-	('Ferrari'),
-	('Lamborghini'),
-	('Rolls-Royce'),
-	('Bentley');
+	('JAC Motors');
 
 create table automec_desenv.marca (
 	cod_marca int(11) not null auto_increment,
@@ -353,20 +631,22 @@ create table automec_desenv.marca (
 	unique key marca_des_marca_uk (des_marca)
 );
 
--- automec_desenv.recurso definição
+-- automec_desenv.recurso
 
 select * from automec_desenv.recurso r;
 
 insert into automec_desenv.recurso (des_recurso)
-values 
+values
 	('Controle de acesso'),
-	('Funcionalidade'),
-	('Grupo de peça'),
-	('Marca'),
-	('Modelo'),
 	('Perfil'),
+	('Usuário'),
+	('Recurso'),
 	('Tabela de apoio'),
-	('Usuário');
+	('Marca e Modelo'),
+	('Grupo de peça e serviço'),
+    ('Subgrupo de peça e serviço'),
+    ('Cadastro'),
+    ('Produto e serviço');
 
 create table automec_desenv.recurso (
   cod_recurso int(11) not null auto_increment,
@@ -377,14 +657,16 @@ create table automec_desenv.recurso (
   constraint recurso_situacao_chk check (situacao in ('A','C'))
 );
 
--- automec_desenv.usuario definição
+-- automec_desenv.usuario
 
 select * from automec_desenv.usuario u;
 
 insert into automec_desenv.usuario (email, login, nome, senha, situacao, cod_perfil)
 values 
-	('mecanico.lider@email.com', 'mecanico.lider', 'MECANICO LIDER', 'mec@159', 'I', 4),
-	('getulio.silva@email.br', 'getulio.silva', 'GETÚLIO SILVA', 'get@159', 'A', 1),
+    ('getulio.silva@email.br', 'getulio.silva', 'GETÚLIO SILVA', 'get@159', 'A', 1),
+    ('gerente.automec@email.br', 'viialdo.mosquito', 'VIVIALDO MOSQUITO', 'mosquito', 'A', 2),
+	('balconista.automec@email.com', 'florencio.maracuja', 'FLORENCIO MARACUJÁ', 'maracuja', 'A', 3),	
+	('mecanico.automec@email.com', 'mecanico.automec', 'JOÃO DA ARUELA', 'aruela', 'I', 4),	
 	('bob.sauro@email.com', 'bob.sauro', 'BOB SAURO', 'bob@159', 'A', 3);
 
 create table automec_desenv.usuario (
@@ -398,18 +680,19 @@ create table automec_desenv.usuario (
   primary key (cod_usuario),
   unique key usuario_login_uk (login),
   constraint usuario_cod_perfil_fk foreign key (cod_perfil) references perfil (cod_perfil),
-  constraint usuario_situacao_chk check (situacao in ('A','C','I','S'))
+  constraint usuario_situacao_chk check (situacao in ('A','I'))
 );
 
--- automec_desenv.perfil definição
+-- automec_desenv.perfil
 
 select * from automec_desenv.perfil p;
 
 insert into automec_desenv.perfil (des_perfil)
 values 
 	('Analista'),
+	('Gerente'),
 	('Balconista'),
-	('Gerente');
+    ('Mecanico');
 
 create table automec_desenv.perfil (
 	cod_perfil int(11) not null auto_increment,

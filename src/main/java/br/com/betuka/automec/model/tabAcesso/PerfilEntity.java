@@ -79,5 +79,4 @@ public class PerfilEntity implements Serializable {
 	public String toString() {
 		return "perfil [codPerfil=" + codPerfil + ", desPerfil=" + desPerfil + "]";
 	}
-	
 }

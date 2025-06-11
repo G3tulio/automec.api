@@ -88,8 +88,9 @@ public class RecursoEntity implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		RecursoEntity other = (RecursoEntity) obj;
-		return Objects.equals(codRecurso, other.codRecurso) && Objects.equals(desRecurso, other.desRecurso)
-				&& Objects.equals(situacao, other.situacao);
+		return Objects.equals(codRecurso, other.codRecurso) && 
+			   Objects.equals(desRecurso, other.desRecurso)	&& 
+			   Objects.equals(situacao, other.situacao);
 	}
 
 	@Override

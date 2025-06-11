@@ -24,7 +24,7 @@ public class PerfilService {
     }
 	
 	private void validarEntrada(PerfilDTO perfilDTO) throws ValidationException, Exception {
-    	if (perfilDTO.getCodPerfil() != 0) { 
+    	if (perfilDTO.getCodPerfil() != 0) {
     		this.pesquisarCodigo(perfilDTO.getCodPerfil()); // Caso não encontre levanta ValidationException
     	}
 		
@@ -59,7 +59,7 @@ public class PerfilService {
     public void deletar(int codPerfil) throws ValidationException, Exception {
     	this.pesquisarCodigo(codPerfil); // Caso não encontre levanta ValidationException
     	
-    	if (this.existePerfil(codPerfil)) {
+    	if (this.existePerfilUsuario(codPerfil)) {
     		throw new ValidationException (Constants.PERFIL_UTILIZADO);
     	}
     	
@@ -70,9 +70,9 @@ public class PerfilService {
 		}
     }
     
-    private boolean existePerfil(int codPerfil) throws ValidationException, Exception {
+    private boolean existePerfilUsuario(int codPerfil) throws ValidationException, Exception {
     	try {
-    		return this.perfilRepository.existePerfil(codPerfil);
+    		return this.perfilRepository.existePerfilUsuario(codPerfil);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
@@ -98,9 +98,9 @@ public class PerfilService {
 		}
     }
     
-    public List<PerfilDTO> pesquisarPorDescricao(String desPerfil) throws ValidationException, Exception {
+    public List<PerfilDTO> buscarDescricao(String desPerfil) throws ValidationException, Exception {
     	try {
-    		return PerfilDTO.toList(this.perfilRepository.pesquisarPorDescricao(desPerfil));
+    		return PerfilDTO.toList(this.perfilRepository.buscarDescricao(desPerfil));
     	} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

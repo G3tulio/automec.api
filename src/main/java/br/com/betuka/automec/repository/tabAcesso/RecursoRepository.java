@@ -15,6 +15,6 @@ public interface RecursoRepository extends JpaRepository<RecursoEntity, Integer>
 	Optional<RecursoEntity> pesquisarDescricao(@Param("desRecurso") String desRecurso);
 	
 	@Query("select r from RecursoEntity r where r.desRecurso like concat('%', :desRecurso, '%')")
-	List<RecursoEntity> pesquisarPorDescricao(@Param("desRecurso") String desRecurso);
+	List<RecursoEntity> buscarDescricao(@Param("desRecurso") String desRecurso);
 	
 }

@@ -113,7 +113,7 @@ public class UsuarioService {
 	public void deletar(int codUsuario) throws ValidationException, Exception {
 		this.pesquisarCodigo(codUsuario); // Caso não encontre, levanta uma ValidationException
 		
-		// Mais a frente verificar se o usuário está sendo utilizado em outra tabela FK
+		// Mais a frente verificar se o usuário está sendo utilizado em outra tabela ( FK )
 		
 		try {
 			this.usuarioRepository.deleteById(codUsuario);
