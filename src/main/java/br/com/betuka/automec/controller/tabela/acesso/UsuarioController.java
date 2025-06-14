@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller.tabAcesso;
+package br.com.betuka.automec.controller.tabela.acesso;
 
 import java.util.List;
 import java.util.Map;
@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.tabAcesso.AutenticaDTO;
-import br.com.betuka.automec.dto.tabAcesso.UsuarioDTO;
+import br.com.betuka.automec.dto.tabela.acesso.AutenticaDTO;
+import br.com.betuka.automec.dto.tabela.acesso.UsuarioDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.tabAcesso.UsuarioService;
+import br.com.betuka.automec.service.tabela.acesso.UsuarioService;
 
 // @CrossOrigin(origins = "*") // Permite requisições de qualquer origem
 

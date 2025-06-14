@@ -1,10 +1,10 @@
-package br.com.betuka.automec.dto.TabApoio;
+package br.com.betuka.automec.dto.tabela.apoio;
 
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.model.tabApoio.MarcaEntity;
+import br.com.betuka.automec.model.tabela.apoio.MarcaEntity;
 
 public class MarcaDTO {
 	

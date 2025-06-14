@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller;
+package br.com.betuka.automec.controller.cadastro;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.ClienteDTO;
 import br.com.betuka.automec.dto.ResponseDTO;
+import br.com.betuka.automec.dto.cadastro.ClienteDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.ClienteService;
+import br.com.betuka.automec.service.cadastro.ClienteService;
 
 @RestController
 @RequestMapping(value = "automec/cliente/")
@@ -42,7 +42,7 @@ public class ClienteController {
 	@PostMapping(value = "adicionar")
 	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody ClienteDTO clienteDTO) {
 		try {
-			this.clietenService.adicionar(clienteDTO);
+			this.clietenService.gravar(clienteDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -58,7 +58,7 @@ public class ClienteController {
 	@PutMapping(value = "atualizar")
 	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody ClienteDTO clienteDTO) {
 		try {
-			this.clietenService.atualizar(clienteDTO);
+			this.clietenService.gravar(clienteDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -103,10 +103,10 @@ public class ClienteController {
 	    }
 	}
 	
-	@GetMapping(value = "pesquisarNome/{nomCliente}")
-	public ResponseEntity<ResponseDTO<List<ClienteDTO>>> pesquisarNome(@PathVariable("nomCliente") String pNomCliente) {
+	@GetMapping(value = "buscarNome/{nomCliente}")
+	public ResponseEntity<ResponseDTO<List<ClienteDTO>>> buscarNome(@PathVariable("nomCliente") String pNomCliente) {
 		try {
-			List<ClienteDTO> lista = this.clietenService.pesquisarNome(pNomCliente);
+			List<ClienteDTO> lista = this.clietenService.buscarNome(pNomCliente);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

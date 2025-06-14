@@ -1,4 +1,4 @@
-package br.com.betuka.automec.dto.tabAcesso;
+package br.com.betuka.automec.dto.tabela.acesso;
 
 public class AutenticaDTO {
 

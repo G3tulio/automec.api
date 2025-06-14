@@ -1,11 +1,11 @@
-package br.com.betuka.automec.model.tabAcesso;
+package br.com.betuka.automec.model.tabela.acesso;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.dto.tabAcesso.RecursoDTO;
+import br.com.betuka.automec.dto.tabela.acesso.RecursoDTO;
 import br.com.betuka.automec.util.enums.SituacaoEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

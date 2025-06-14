@@ -1,0 +1,113 @@
+--- Automec To do List
+---------------------------------------------------------------------
+
+1. Funcionalidade: Perfil
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar
+	e. Pesquisar código
+	f. Pesquisar descrição
+	g. Buscar descrição
+
+2. Funcionalidade: Usuário
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar
+	e. Pesquisar código
+	f. Pesquisar nome
+	g. Pesquisar login
+	h. Autenticar
+
+3. Funcionalidade: Recurso
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar                  -- Testar quando o recurso estiver relacionado a um perfil (funcionalidade: usuario + perfil)
+	e. Pesquisar código
+	f. Pesquisar descrição
+	g. Buscar descrição
+
+4. Funcionalidade: Marca
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar
+	e. Pesquisar código
+	f. Pesquisar descrição
+	g. Buscar descrição
+
+5. Funcionalidade: Modelo
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar
+	e. Pesquisar código
+	f. Pesquisar descrição
+	g. Buscar Modelos por Marca
+
+6. Funcionalidade: Veículo
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar                  -- Testar quando o veículo estiver relacionado a um serviço (Veículo -> serviço)
+	e. Pesquisar código
+	f. Pesquisar placa
+
+7. Funcionalidade: Mecanico
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar                  -- Testar quando o mecanico estiver relacionado a um serviço (Mecanico -> serviço)
+	e. Pesquisar código
+	f. Pesquisar nome
+
+8. Funcionalidade: Cliente x
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar                  -- Testar quando o cliente estiver relacionado a um serviço (Cliente -> serviço)
+	e. Pesquisar código
+	f. Buscar nome
+	f. Pesquisar CPF
+
+8. Funcionalidade: Fabricante x
+
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar                  -- Testar quando o fabricante estiver relacionado a uma peça (Fabricante -> peça)
+	e. Pesquisar código
+	f. Pesquisar descrição
+	f. Busara descrição
+
+8. Funcionalidade: Fornecedor x
+
+	a. Listar x
+	b. Adicionar x
+	c. Atualizar x
+	d. Deletar                  -- Testar quando o fabricante estiver relacionado a uma peça (Fabricante -> peça)
+	e. Pesquisar código x
+	f. Pesquisar descrição x
+	f. Busara descrição x
+	
+	
+
+
+
+
+
+
+
+
+
+

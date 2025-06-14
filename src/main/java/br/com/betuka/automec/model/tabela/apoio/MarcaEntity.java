@@ -1,11 +1,11 @@
-package br.com.betuka.automec.model.tabApoio;
+package br.com.betuka.automec.model.tabela.apoio;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.dto.TabApoio.MarcaDTO;
+import br.com.betuka.automec.dto.tabela.apoio.MarcaDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

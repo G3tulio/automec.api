@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller;
+package br.com.betuka.automec.controller.cadastro;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.VeiculoDTO;
+import br.com.betuka.automec.dto.cadastro.VeiculoDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.VeiculoService;
+import br.com.betuka.automec.service.cadastro.VeiculoService;
 
 @RestController
 @RequestMapping(value = "automec/veiculo/")
@@ -42,7 +42,7 @@ public class VeiculoController {
 	@PostMapping(value = "adicionar")
 	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody VeiculoDTO veiculoDTO) {
 		try {
-			this.veiculoService.adicionar(veiculoDTO);
+			this.veiculoService.gravar(veiculoDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -58,7 +58,7 @@ public class VeiculoController {
 	@PutMapping(value = "atualizar")
 	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody VeiculoDTO veiculoDTO) {
 		try {
-			this.veiculoService.atualizar(veiculoDTO);
+			this.veiculoService.gravar(veiculoDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

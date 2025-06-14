@@ -1,16 +1,17 @@
-package br.com.betuka.automec.service;
+package br.com.betuka.automec.service.cadastro;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.FabricanteDTO;
+import br.com.betuka.automec.dto.cadastro.FabricanteDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.FabricanteEntity;
-import br.com.betuka.automec.repository.FabricanteRepository;
+import br.com.betuka.automec.model.cadastro.FabricanteEntity;
+import br.com.betuka.automec.repository.cadastro.FabricanteRepository;
 
 @Service
 public class FabricanteService {
@@ -31,12 +32,24 @@ public class FabricanteService {
 			throw new ValidationException(Constants.FABRICANTE_DESCRICAO_OBRIGATORIA);
 		}
 		
+		FabricanteDTO oFabricanteDTO = null;
+		
 		try {
-			
+			oFabricanteDTO = this.pesquisarDescricao(fabricanteDTO.getDesFabricante());
 		} catch (ValidationException e) {
 			// Não tem exception, neste caso
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
+		}
+		
+		if (Objects.nonNull(oFabricanteDTO)) {
+			if (fabricanteDTO.getCodFabricante() == 0) {
+				throw new ValidationException(Constants.FABRICANTE_JA_CADASTRADO);
+			} else {
+				if (fabricanteDTO.getCodFabricante() != oFabricanteDTO.getCodFabricante()) {
+					throw new ValidationException(Constants.FABRICANTE_JA_CADASTRADO);
+				}
+			}
 		}
 	}
 	
@@ -47,6 +60,8 @@ public class FabricanteService {
 	
 	public void deletar(int codFabricante) throws ValidationException, Exception {
 		this.pesquisarCodigo(codFabricante);
+		
+		// Mais a frente verificar se o fabricante tem relação com a entidade peça [ FK ]
 		
 		try {
 			this.fabricanteRepository.deleteById(codFabricante);
@@ -65,9 +80,19 @@ public class FabricanteService {
 		}
 	}
 	
-	public List<FabricanteDTO> pesquisarDescricao(String desFabricante) throws Exception {
+	public FabricanteDTO pesquisarDescricao(String desFabricante) throws Exception {
 		try {
-			return FabricanteDTO.toList(this.fabricanteRepository.pesquisarDescricao(desFabricante));
+			return new FabricanteDTO(this.fabricanteRepository.pesquisarDescricao(desFabricante).get());
+		} catch (NoSuchElementException e) {
+			throw new ValidationException(Constants.FABRICANTE_INEXISTENTE);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
+	public List<FabricanteDTO> buscarDescricao(String desFabricante) throws Exception {
+		try {
+			return FabricanteDTO.toList(this.fabricanteRepository.buscarDescricao(desFabricante));
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

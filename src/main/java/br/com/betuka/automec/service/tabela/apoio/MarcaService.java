@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service.tabApoio;
+package br.com.betuka.automec.service.tabela.apoio;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.TabApoio.MarcaDTO;
+import br.com.betuka.automec.dto.tabela.apoio.MarcaDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.tabApoio.MarcaEntity;
-import br.com.betuka.automec.repository.tabApoio.MarcaRepository;
+import br.com.betuka.automec.model.tabela.apoio.MarcaEntity;
+import br.com.betuka.automec.repository.tabela.apoio.MarcaRepository;
 
 @Service
 public class MarcaService {
@@ -42,10 +42,10 @@ public class MarcaService {
 		
 		if (Objects.nonNull(oMarcaDTO)) {
 			if (marcaDTO.getCodMarca() == 0) {
-				throw new ValidationException(Constants.MARCA_JA_CADASTRADO);
+				throw new ValidationException(Constants.MARCA_JA_CADASTRADA);
 			} else {
 				if (marcaDTO.getCodMarca() != oMarcaDTO.getCodMarca()) {
-					throw new ValidationException(Constants.MARCA_JA_CADASTRADO);
+					throw new ValidationException(Constants.MARCA_JA_CADASTRADA);
 				}
 			}
 		}

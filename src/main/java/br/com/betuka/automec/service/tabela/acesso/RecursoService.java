@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service.tabAcesso;
+package br.com.betuka.automec.service.tabela.acesso;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.tabAcesso.RecursoDTO;
+import br.com.betuka.automec.dto.tabela.acesso.RecursoDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.tabAcesso.RecursoEntity;
-import br.com.betuka.automec.repository.tabAcesso.RecursoRepository;
+import br.com.betuka.automec.model.tabela.acesso.RecursoEntity;
+import br.com.betuka.automec.repository.tabela.acesso.RecursoRepository;
 import br.com.betuka.automec.util.enums.SituacaoEnum;
 
 @Service

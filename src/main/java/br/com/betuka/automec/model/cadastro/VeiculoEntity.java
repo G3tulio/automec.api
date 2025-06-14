@@ -1,13 +1,14 @@
-package br.com.betuka.automec.model;
+package br.com.betuka.automec.model.cadastro;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.dto.VeiculoDTO;
-import br.com.betuka.automec.model.tabApoio.ModeloEntity;
+import br.com.betuka.automec.dto.cadastro.VeiculoDTO;
+import br.com.betuka.automec.model.tabela.apoio.ModeloEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -157,9 +158,10 @@ public class VeiculoEntity implements Serializable {
 	public void setDtaCadastro(Date dtaCadastro) {
 		this.dtaCadastro = dtaCadastro;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	
+	public String getDtaCadastroBR() {
+		SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
+		return DateFor.format(this.dtaCadastro);		
 	}
 
 	@Override

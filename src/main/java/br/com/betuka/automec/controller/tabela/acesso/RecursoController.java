@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller.tabAcesso;
+package br.com.betuka.automec.controller.tabela.acesso;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.tabAcesso.RecursoDTO;
+import br.com.betuka.automec.dto.tabela.acesso.RecursoDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.tabAcesso.RecursoService;
+import br.com.betuka.automec.service.tabela.acesso.RecursoService;
 
 @RestController
 @RequestMapping(value = "automec/recurso/")

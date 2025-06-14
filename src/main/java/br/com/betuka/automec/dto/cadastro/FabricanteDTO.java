@@ -1,14 +1,15 @@
-package br.com.betuka.automec.dto;
+package br.com.betuka.automec.dto.cadastro;
 
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.model.FabricanteEntity;
+import br.com.betuka.automec.model.cadastro.FabricanteEntity;
 
 public class FabricanteDTO {
 	
 	private int codFabricante;
+	
 	private String desFabricante;
 	
 	public FabricanteDTO() {

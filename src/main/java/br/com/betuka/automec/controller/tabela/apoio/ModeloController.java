@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller.tabApoio;
+package br.com.betuka.automec.controller.tabela.apoio;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.TabApoio.ModeloDTO;
-import br.com.betuka.automec.dto.TabApoio.VWModelosMarcaDTO;
+import br.com.betuka.automec.dto.tabela.apoio.ModeloDTO;
+import br.com.betuka.automec.dto.tabela.apoio.VWModelosMarcaDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.tabApoio.ModeloService;
+import br.com.betuka.automec.service.tabela.apoio.ModeloService;
 
 @RestController
 @RequestMapping(value = "automec/modelo/")

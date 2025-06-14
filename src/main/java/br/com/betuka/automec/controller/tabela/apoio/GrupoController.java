@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller.tabApoio;
+package br.com.betuka.automec.controller.tabela.apoio;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.TabApoio.GrupoDTO;
+import br.com.betuka.automec.dto.tabela.apoio.GrupoDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.tabApoio.GrupoService;
+import br.com.betuka.automec.service.tabela.apoio.GrupoService;
 
 @RestController
 @RequestMapping(value = "automec/grupo/")

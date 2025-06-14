@@ -1,4 +1,4 @@
-package br.com.betuka.automec.repository.tabAcesso;
+package br.com.betuka.automec.repository.tabela.acesso;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import br.com.betuka.automec.model.tabAcesso.RecursoEntity;
+import br.com.betuka.automec.model.tabela.acesso.RecursoEntity;
 
 public interface RecursoRepository extends JpaRepository<RecursoEntity, Integer> {
 	

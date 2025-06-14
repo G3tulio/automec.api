@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service;
+package br.com.betuka.automec.service.cadastro;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.ClienteDTO;
+import br.com.betuka.automec.dto.cadastro.ClienteDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.ClienteEntity;
-import br.com.betuka.automec.repository.ClienteRepository;
+import br.com.betuka.automec.model.cadastro.ClienteEntity;
+import br.com.betuka.automec.repository.cadastro.ClienteRepository;
 
 @Service
 public class ClienteService {
@@ -19,11 +19,8 @@ public class ClienteService {
 	@Autowired
 	private ClienteRepository clienteRepository;
 	
-	private ClienteDTO oClienteDTO;
-	
 	public List<ClienteDTO> listar() {
-		List<ClienteEntity> lista = this.clienteRepository.findAll();
-		return lista.stream().map(ClienteDTO::new).toList();
+		return ClienteDTO.toList(this.clienteRepository.findAll());
 	}
 	
 	private void validarEntrada(ClienteDTO clienteDTO) throws ValidationException, Exception {
@@ -43,37 +40,36 @@ public class ClienteService {
 			throw new ValidationException(Constants.CLIENTE_CELULAR_OBRIGATORIA);
 		}
 		
+		ClienteDTO oClienteDTO = null;
+		
 		try {
 			oClienteDTO = this.pesquisarCpf(clienteDTO.getNroCpf());
 		} catch (ValidationException e) {
-			// Não encontrou o nome do usuário
+			System.out.println("Não encontrou o cpf do cliente"); 
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
 		
 		if (Objects.nonNull(oClienteDTO)) {
 			if (clienteDTO.getCodCliente() == 0) {
-				throw new ValidationException(Constants.CLIENTE_CPF_CADASTRADA);
-			}
-			
-			if ( (clienteDTO.getCodCliente() != 0) && (clienteDTO.getCodCliente() != oClienteDTO.getCodCliente()) ) {
-				throw new ValidationException(Constants.CLIENTE_CPF_CADASTRADA);
+				throw new ValidationException(Constants.CLIENTE_CPF_JA_CADASTRADA);
+			} else {
+				if (clienteDTO.getCodCliente() != oClienteDTO.getCodCliente()) {
+					throw new ValidationException(Constants.CLIENTE_CPF_JA_CADASTRADA);
+				} 
 			}
 		}
 	}
 	
-	public void adicionar(ClienteDTO clienteDTO) throws ValidationException, Exception {
-		this.validarEntrada(clienteDTO);
-		this.clienteRepository.save( new ClienteEntity(clienteDTO) );
-	}
-	
-	public void atualizar(ClienteDTO clienteDTO) throws ValidationException, Exception {
+	public void gravar(ClienteDTO clienteDTO) throws ValidationException, Exception {
 		this.validarEntrada(clienteDTO);
 		this.clienteRepository.save( new ClienteEntity(clienteDTO) );
 	}
 	
 	public void deletar(int codCliente) throws ValidationException, Exception {
 		this.pesquisarCodigo(codCliente);
+		
+		// Mas a frente, verificar se o cliente está relacionado com a entidade serviço [ FK ]
 		
 		try {
 			this.clienteRepository.deleteById(codCliente);
@@ -92,9 +88,9 @@ public class ClienteService {
 		}
 	}
 	
-	public List<ClienteDTO> pesquisarNome(String nomCliente) throws Exception {
+	public List<ClienteDTO> buscarNome(String nomCliente) throws Exception {
 		try {
-			return ClienteDTO.toList(this.clienteRepository.pesquisarNome(nomCliente));
+			return ClienteDTO.toList(this.clienteRepository.buscarNome(nomCliente));
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

@@ -25,7 +25,16 @@ create table automec_desenv.grupo (
 	unique key grupo_des_grupo_uk (des_grupo)
 );
 
--- automec_desenv.fabricante definição
+-- automec_desenv.fornecedor
+
+create table automec_desenv.fornecedor (
+	cod_fornecedor int(11) not null auto_increment,
+	des_fornecedor varchar(100) not null,
+	primary key (cod_fornecedor),
+	unique key fornecedor_des_fornecedor_uk (des_fornecedor)
+);
+
+-- automec_desenv.fabricante
 
 select * from automec_desenv.fabricante f;
 
@@ -69,7 +78,7 @@ create table automec_desenv.fabricante (
 	unique key fabricante_des_fabricante_uk (des_fabricante)
 );
 
--- automec_desenv.cliente definição
+-- automec_desenv.cliente
 
 select * from automec_desenv.cliente c where c.nom_cliente like concat("%", "Silva", "%")
 
@@ -141,9 +150,9 @@ create table automec_desenv.cliente (
 	unique key cliente_nro_cpf_uk (nro_cpf)
 );
 
--- automec_desenv.mecanico definição
+-- automec_desenv.mecanico
 
-select * from automec_desenv.mecanico m;
+select * from automec_desenv.mecanico m where m.nom_mecanico = 'Bob Sauro da Silva Bababa';
 
 insert into automec_desenv.mecanico (nom_mecanico, nro_celular)
 values
@@ -159,15 +168,12 @@ values
 ('Thiago Moreira Souza', '81 9 98488990');
 
 create table automec_desenv.mecanico (
-	cod_mecanico int(11) not null auto_increment primary key,
+	cod_mecanico int(11) not null auto_increment,
 	nom_mecanico varchar(100) not null,
-	nro_celular varchar(15) not null
+	nro_celular varchar(15) not null,
+	primary key (cod_mecanico),
+	unique key mecanico_nom_mecanico_uk (des_modelo)
 );
-
--- automec_desenv.vw_modelos_marca
-
-select v.*, m.des_modelo from automec_desenv.veiculo v
-inner join automec_desenv.modelo m on m.cod_modelo = v.cod_modelo
 
 -- automec_desenv.veiculo
 
@@ -459,7 +465,7 @@ create table automec_desenv.veiculo (
   qtd_km_dia int(10) not null default 0,
   dta_cadastro date not null default curdate(),
   primary key (cod_veiculo),
-  unique index veiculo_nro_placa (nro_placa),
+  unique index veiculo_nro_placa_idx (nro_placa),
   constraint veiculo_cod_modelo_fk foreign key (cod_modelo) references modelo (cod_modelo)
 );
 

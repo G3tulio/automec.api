@@ -1,11 +1,11 @@
-package br.com.betuka.automec.model.tabApoio;
+package br.com.betuka.automec.model.tabela.apoio;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.dto.TabApoio.MecanicoDTO;
+import br.com.betuka.automec.dto.tabela.apoio.MecanicoDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -91,8 +91,6 @@ public class MecanicoEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MecanicoEntity [codMecanico=" + codMecanico + 
-				", nomMecanico=" + nomMecanico + 
-				", nroCelular="	+ nroCelular + "]";
+		return "MecanicoEntity [codMecanico=" + codMecanico + ", nomMecanico=" + nomMecanico + ", nroCelular="	+ nroCelular + "]";
 	}
 }

@@ -1,12 +1,13 @@
-package br.com.betuka.automec.dto;
+package br.com.betuka.automec.dto.cadastro;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.dto.TabApoio.ModeloDTO;
-import br.com.betuka.automec.model.VeiculoEntity;
+import br.com.betuka.automec.dto.tabela.apoio.ModeloDTO;
+import br.com.betuka.automec.model.cadastro.VeiculoEntity;
 
 public class VeiculoDTO {
 	
@@ -126,5 +127,10 @@ public class VeiculoDTO {
 
 	public void setDtaCadastro(Date dtaCadastro) {
 		this.dtaCadastro = dtaCadastro;
+	}
+	
+	public String getDtaCadastroBR() {
+		SimpleDateFormat DateFor = new SimpleDateFormat("dd/MM/yyyy");
+		return DateFor.format(this.dtaCadastro);		
 	}
 }

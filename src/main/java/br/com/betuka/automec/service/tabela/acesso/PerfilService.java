@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service.tabAcesso;
+package br.com.betuka.automec.service.tabela.acesso;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.tabAcesso.PerfilDTO;
+import br.com.betuka.automec.dto.tabela.acesso.PerfilDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.tabAcesso.PerfilEntity;
-import br.com.betuka.automec.repository.tabAcesso.PerfilRepository;
+import br.com.betuka.automec.model.tabela.acesso.PerfilEntity;
+import br.com.betuka.automec.repository.tabela.acesso.PerfilRepository;
 
 @Service
 public class PerfilService {
@@ -59,7 +59,7 @@ public class PerfilService {
     public void deletar(int codPerfil) throws ValidationException, Exception {
     	this.pesquisarCodigo(codPerfil); // Caso não encontre levanta ValidationException
     	
-    	if (this.existePerfilUsuario(codPerfil)) {
+    	if (this.existeUsuarioPerfil(codPerfil)) {
     		throw new ValidationException (Constants.PERFIL_UTILIZADO);
     	}
     	
@@ -70,9 +70,9 @@ public class PerfilService {
 		}
     }
     
-    private boolean existePerfilUsuario(int codPerfil) throws ValidationException, Exception {
+    private boolean existeUsuarioPerfil(int codPerfil) throws ValidationException, Exception {
     	try {
-    		return this.perfilRepository.existePerfilUsuario(codPerfil);
+    		return this.perfilRepository.existeUsuarioPerfil(codPerfil);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

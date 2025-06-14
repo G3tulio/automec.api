@@ -1,10 +1,10 @@
-package br.com.betuka.automec.dto.tabAcesso;
+package br.com.betuka.automec.dto.tabela.acesso;
 
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.model.tabAcesso.UsuarioEntity;
+import br.com.betuka.automec.model.tabela.acesso.UsuarioEntity;
 import br.com.betuka.automec.util.enums.SituacaoEnum;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

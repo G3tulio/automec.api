@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service.tabApoio;
+package br.com.betuka.automec.service.tabela.apoio;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.TabApoio.ModeloDTO;
-import br.com.betuka.automec.dto.TabApoio.VWModelosMarcaDTO;
+import br.com.betuka.automec.dto.tabela.apoio.ModeloDTO;
+import br.com.betuka.automec.dto.tabela.apoio.VWModelosMarcaDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.tabApoio.ModeloEntity;
-import br.com.betuka.automec.repository.tabApoio.ModeloRepository;
+import br.com.betuka.automec.model.tabela.apoio.ModeloEntity;
+import br.com.betuka.automec.repository.tabela.apoio.ModeloRepository;
 
 @Service
 public class ModeloService {
@@ -50,10 +50,20 @@ public class ModeloService {
 	public void deletar(int codModelo) throws ValidationException, Exception {
 		this.pesquisarCodigo(codModelo); // Caso não encontre levanta ValidationException
 		
-		// Testar quando cadastar os veículos associados a uma marca
+    	if (this.existeVeiculoModelo(codModelo)) {
+    		throw new ValidationException (Constants.MODELO_UTILIZADO);
+    	}
 		
 		try {
 			this.modeloRepository.deleteById(codModelo);	
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
+	
+	private boolean existeVeiculoModelo(int codModelo) throws ValidationException, Exception {
+		try {
+			return this.modeloRepository.existeVeiculoModelo(codModelo);
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}

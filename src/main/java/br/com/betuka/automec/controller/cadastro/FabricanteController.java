@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller;
+package br.com.betuka.automec.controller.cadastro;
 
 import java.util.List;
 
@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.FabricanteDTO;
 import br.com.betuka.automec.dto.ResponseDTO;
+import br.com.betuka.automec.dto.cadastro.FabricanteDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.FabricanteService;
+import br.com.betuka.automec.service.cadastro.FabricanteService;
 
 @RestController
 @RequestMapping(value = "automec/fabricante/")
@@ -104,9 +104,25 @@ public class FabricanteController {
 	}
 	                     
 	@GetMapping(value = "pesquisarDescricao/{desFabricante}")
-	public ResponseEntity<ResponseDTO<List<FabricanteDTO>>> pesquisarDescricao(@PathVariable("desFabricante") String pDesFabricante) {
+	public ResponseEntity<ResponseDTO<FabricanteDTO>> pesquisarDescricao(@PathVariable("desFabricante") String pDesFabricante) {
 		try {
-			List<FabricanteDTO> lista = this.fabricanteService.pesquisarDescricao(pDesFabricante);
+			FabricanteDTO fabricanteDTO = this.fabricanteService.pesquisarDescricao(pDesFabricante);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, fabricanteDTO));
+		} catch (ValidationException e) {
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+		                		                e.getMessage()));
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+	                		                Constants.OCORREU_ERRO + e.getMessage()));
+	    }
+	}
+	
+	@GetMapping(value = "buscarDescricao/{desFabricante}")
+	public ResponseEntity<ResponseDTO<List<FabricanteDTO>>> buscarDescricao(@PathVariable("desFabricante") String pDesFabricante) {
+		try {
+			List<FabricanteDTO> lista = this.fabricanteService.buscarDescricao(pDesFabricante);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

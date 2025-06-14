@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller.tabApoio;
+package br.com.betuka.automec.controller.tabela.apoio;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.TabApoio.MarcaDTO;
+import br.com.betuka.automec.dto.tabela.apoio.MarcaDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.tabApoio.MarcaService;
+import br.com.betuka.automec.service.tabela.apoio.MarcaService;
 
 @RestController
 @RequestMapping(value = "automec/marca/")

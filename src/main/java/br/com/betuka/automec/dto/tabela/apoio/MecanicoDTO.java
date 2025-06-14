@@ -1,10 +1,10 @@
-package br.com.betuka.automec.dto.TabApoio;
+package br.com.betuka.automec.dto.tabela.apoio;
 
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.model.tabApoio.MecanicoEntity;
+import br.com.betuka.automec.model.tabela.apoio.MecanicoEntity;
 
 public class MecanicoDTO {
 	
@@ -20,7 +20,7 @@ public class MecanicoDTO {
 		super();
 		this.codMecanico = codMecanico;
 		this.nomMecanico = nomMecanico;
-		this.nroCelular = nroCelular;
+		this.nroCelular  = nroCelular;
 	}
 	
 	public MecanicoDTO(MecanicoEntity mecanicoEntity) {

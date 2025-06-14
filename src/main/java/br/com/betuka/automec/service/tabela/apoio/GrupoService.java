@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service.tabApoio;
+package br.com.betuka.automec.service.tabela.apoio;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.TabApoio.GrupoDTO;
+import br.com.betuka.automec.dto.tabela.apoio.GrupoDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.tabApoio.GrupoEntity;
-import br.com.betuka.automec.repository.tabApoio.GrupoRepository;
+import br.com.betuka.automec.model.tabela.apoio.GrupoEntity;
+import br.com.betuka.automec.repository.tabela.apoio.GrupoRepository;
 
 @Service
 public class GrupoService {

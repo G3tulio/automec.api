@@ -1,19 +1,25 @@
-package br.com.betuka.automec.dto;
+package br.com.betuka.automec.dto.cadastro;
 
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.model.ClienteEntity;
+import br.com.betuka.automec.model.cadastro.ClienteEntity;
 
 public class ClienteDTO {
 
 	private int codCliente;
+	
 	private String nomCliente;
+	
 	private String nroCpf;
+	
 	private String nroCelular;
+	
 	private String nroTelefone;
+	
 	private String email;
+	
 	private String obs;
 	
 	public ClienteDTO() {

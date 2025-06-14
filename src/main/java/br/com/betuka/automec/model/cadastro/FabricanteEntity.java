@@ -1,11 +1,11 @@
-package br.com.betuka.automec.model;
+package br.com.betuka.automec.model.cadastro;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import br.com.betuka.automec.dto.FabricanteDTO;
+import br.com.betuka.automec.dto.cadastro.FabricanteDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

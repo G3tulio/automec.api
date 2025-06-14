@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service;
+package br.com.betuka.automec.service.cadastro;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.VeiculoDTO;
+import br.com.betuka.automec.dto.cadastro.VeiculoDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.VeiculoEntity;
-import br.com.betuka.automec.repository.VeiculoRepository;
-import br.com.betuka.automec.service.tabApoio.ModeloService;
+import br.com.betuka.automec.model.cadastro.VeiculoEntity;
+import br.com.betuka.automec.repository.cadastro.VeiculoRepository;
+import br.com.betuka.automec.service.tabela.apoio.ModeloService;
 
 @Service
 public class VeiculoService {
@@ -23,8 +23,6 @@ public class VeiculoService {
 	@Autowired
 	private ModeloService modeloService;
 	
-	private VeiculoDTO oVeiculoDTO = null;
-	
 	public List<VeiculoDTO> listar() {
 		List<VeiculoEntity> lista = this.veiculoRepository.findAll();
 		return lista.stream().map(VeiculoDTO::new).toList();
@@ -32,43 +30,40 @@ public class VeiculoService {
 	
 	private void validarEntrada(VeiculoDTO veiculoDTO) throws ValidationException, Exception {
 		if (veiculoDTO.getCodVeiculo() != 0) {
-			// Caso não encontre já levanta uma ValidationException
-			this.pesquisarCodigo(veiculoDTO.getCodVeiculo()); 
+			this.pesquisarCodigo(veiculoDTO.getCodVeiculo()); // Caso não encontre levanta ValidationException
 		}
 		
-		// Caso não encontre já levanta uma ValidationException
-		this.modeloService.pesquisarCodigo(veiculoDTO.getModelo().getCodModelo());
+		this.modeloService.pesquisarCodigo(veiculoDTO.getModelo().getCodModelo()); // Caso não encontre levanta ValidationException
 		
-		if (veiculoDTO.getNroPlaca().isEmpty()) {
+		if (veiculoDTO.getNroPlaca().isBlank()) {
 			throw new ValidationException(Constants.VEICULO_PLACA_OBRIGATORIA);
 		}
+		
+		VeiculoDTO oVeiculoDTO = null;
 		
 		try {
 			oVeiculoDTO = this.pesuisarNroPlaca(veiculoDTO.getNroPlaca());
 		} catch (ValidationException e) {
-			// Não encontrou o número da placa
-			System.out.println("Não encontrou o número da placa");
+			// Não encontrou o número da placa, não levanta excessão
+			// System.out.println("Não encontrou o número da placa");
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
 		
+		// Encontrou o número da placa
+		
 		if (Objects.nonNull(oVeiculoDTO)) {
 			if (veiculoDTO.getCodVeiculo() == 0) {
-				throw new ValidationException(Constants.VEICULO_PLACA_CADASTRADA);
-			}
-			
-			if ( (veiculoDTO.getCodVeiculo() != 0) && (veiculoDTO.getCodVeiculo() != oVeiculoDTO.getCodVeiculo()) ) {
-				throw new ValidationException(Constants.VEICULO_PLACA_CADASTRADA);
+				throw new ValidationException(Constants.VEICULO_PLACA_JA_CADASTRADA);
+			} else {
+				if (veiculoDTO.getCodVeiculo() != oVeiculoDTO.getCodVeiculo()) {
+					throw new ValidationException(Constants.VEICULO_PLACA_JA_CADASTRADA);
+				}
 			}
 		}
 	}
 
-	public void adicionar(VeiculoDTO veiculoDTO) throws ValidationException, Exception {
-		this.validarEntrada(veiculoDTO);
-		this.veiculoRepository.save( new VeiculoEntity(veiculoDTO) );
-	}
-	
-	public void atualizar(VeiculoDTO veiculoDTO) throws ValidationException, Exception {
+	public void gravar(VeiculoDTO veiculoDTO) throws ValidationException, Exception {
 		this.validarEntrada(veiculoDTO);
 		this.veiculoRepository.save( new VeiculoEntity(veiculoDTO) );
 	}

@@ -1,4 +1,4 @@
-package br.com.betuka.automec.service.tabAcesso;
+package br.com.betuka.automec.service.tabela.acesso;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -9,11 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.tabAcesso.AutenticaDTO;
-import br.com.betuka.automec.dto.tabAcesso.UsuarioDTO;
+import br.com.betuka.automec.dto.tabela.acesso.AutenticaDTO;
+import br.com.betuka.automec.dto.tabela.acesso.UsuarioDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.model.tabAcesso.UsuarioEntity;
-import br.com.betuka.automec.repository.tabAcesso.UsuarioRepository;
+import br.com.betuka.automec.model.tabela.acesso.UsuarioEntity;
+import br.com.betuka.automec.repository.tabela.acesso.UsuarioRepository;
 import br.com.betuka.automec.util.ValidEmail;
 import br.com.betuka.automec.util.enums.SituacaoEnum;
 
@@ -64,10 +64,10 @@ public class UsuarioService {
 		
 		if (Objects.nonNull(oUsuarioDTO)) {
 			if (usuarioDTO.getCodUsuario() == 0) {
-				throw new ValidationException(Constants.USUARIO_NOME_CADASTRADO);
+				throw new ValidationException(Constants.USUARIO_NOME_JA_CADASTRADO);
 			} else {
 				if  (usuarioDTO.getCodUsuario() != oUsuarioDTO.getCodUsuario()) {
-					throw new ValidationException(Constants.USUARIO_NOME_CADASTRADO);
+					throw new ValidationException(Constants.USUARIO_NOME_JA_CADASTRADO);
 				} 
 			}
 		}
@@ -82,10 +82,10 @@ public class UsuarioService {
 		
 		if (Objects.nonNull(oUsuarioDTO)) {
 			if (usuarioDTO.getCodUsuario() == 0) {
-				throw new ValidationException(Constants.USUARIO_LOGIN_CADASTRADO);
+				throw new ValidationException(Constants.USUARIO_LOGIN_JA_CADASTRADO);
 			} else {
 				if (usuarioDTO.getCodUsuario() != oUsuarioDTO.getCodUsuario()) {
-					throw new ValidationException(Constants.USUARIO_LOGIN_CADASTRADO);
+					throw new ValidationException(Constants.USUARIO_LOGIN_JA_CADASTRADO);
 				} 
 			}
 		}
@@ -164,7 +164,7 @@ public class UsuarioService {
 		UsuarioDTO usuarioDTO = this.pesquisarLogin(login); // Se não for localizado, levanta uma ValidationException
 		
 		if (! senha.equals(usuarioDTO.getSenha())) {
-			throw new ValidationException(Constants.AUTENTICACAO_LOGIN_INEXISTEN);
+			throw new ValidationException(Constants.AUTENTICACAO_LOGIN_INEXISTENTE);
 		}
 		
 		if (! usuarioDTO.getSituacao().equals(SituacaoEnum.A)) {

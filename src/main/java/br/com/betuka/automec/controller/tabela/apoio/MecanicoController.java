@@ -1,4 +1,4 @@
-package br.com.betuka.automec.controller.tabApoio;
+package br.com.betuka.automec.controller.tabela.apoio;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.TabApoio.MecanicoDTO;
+import br.com.betuka.automec.dto.tabela.apoio.MecanicoDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.tabApoio.MecanicoService;
+import br.com.betuka.automec.service.tabela.apoio.MecanicoService;
 
 @RestController
 @RequestMapping(value = "automec/mecanico/")
@@ -42,7 +42,7 @@ public class MecanicoController {
 	@PostMapping(value = "adicionar")
 	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody MecanicoDTO mecanicoDTO) {
 		try {
-			this.mecanicoService.adicionar(mecanicoDTO);
+			this.mecanicoService.gravar(mecanicoDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -58,7 +58,7 @@ public class MecanicoController {
 	@PutMapping(value = "atualizar")
 	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody MecanicoDTO mecanicoDTO) {
 		try {
-			this.mecanicoService.atualizar(mecanicoDTO);
+			this.mecanicoService.gravar(mecanicoDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -104,10 +104,10 @@ public class MecanicoController {
 	}
 	
 	@GetMapping(value = "pesquisarNome/{nomMecanico}")
-	public ResponseEntity<ResponseDTO<List<MecanicoDTO>>> pesquisarNome(@PathVariable("nomMecanico") String pNomMecanico) {
+	public ResponseEntity<ResponseDTO<MecanicoDTO>> pesquisarNome(@PathVariable("nomMecanico") String pNomMecanico) {
 		try {
-			List<MecanicoDTO> lista = this.mecanicoService.pesquisarNome(pNomMecanico);
-			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
+			MecanicoDTO mecanicoDTO = this.mecanicoService.pesquisarNome(pNomMecanico);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, mecanicoDTO));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 

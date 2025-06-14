@@ -1,4 +1,4 @@
-package br.com.betuka.automec.dto.TabApoio;
+package br.com.betuka.automec.dto.tabela.apoio;
 
 public class VWModelosMarcaDTO {
 	
