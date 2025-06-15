@@ -15,6 +15,13 @@ public class Constants {
 	/*
 	 * Constants Fabricante
 	 */
+	public static final String FORNECEDOR_INEXISTENTE = "Fornecedor inexistente.";
+	public static final String FORNECEDOR_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
+	public static final String FORNECEDOR_JA_CADASTRADO = "Fornecedor já cadastrado.";
+	
+	/*
+	 * Constants Fabricante
+	 */
 	public static final String FABRICANTE_INEXISTENTE = "Fabricante inexistente.";
 	public static final String FABRICANTE_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
 	public static final String FABRICANTE_JA_CADASTRADO = "Fabricante já cadastrado.";

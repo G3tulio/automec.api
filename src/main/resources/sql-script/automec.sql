@@ -27,9 +27,26 @@ create table automec_desenv.grupo (
 
 -- automec_desenv.fornecedor
 
+select * from automec_desenv.fornecedor f;
+
+insert into automec_desenv.fornecedor (des_fornecedor, nro_celular, nro_telefone) 
+values
+('Auto Peças Brasil', '(11) 98445-6815', '(11) 2821-1194'),
+('Motores Turbo Ltda', '(11) 98160-9827', NULL),
+('Freios & Cia', '(11) 96669-8040', '(11) 7026-7462'),
+('Suspensões São Paulo', '(11) 98859-8510', '(11) 3366-7454'),
+('Baterias Unidas', '(11) 96916-5588', NULL),
+('Vidros Rápidos', '(11) 97866-1762', '(11) 5582-9744'),
+('Escapamentos Premium', '(11) 99819-1116', '(11) 9853-4271'),
+('Radiadores Silva', '(11) 97187-9842', '(11) 3218-7159'),
+('Lubrificantes Forte', '(11) 99534-1045', NULL),
+('Filtros e Óleos Nacional', '(11) 99894-2338', '(11) 6211-1628');
+
 create table automec_desenv.fornecedor (
 	cod_fornecedor int(11) not null auto_increment,
 	des_fornecedor varchar(100) not null,
+	nro_celular varchar(15) null,
+	nro_telefone varchar(15) null,
 	primary key (cod_fornecedor),
 	unique key fornecedor_des_fornecedor_uk (des_fornecedor)
 );
