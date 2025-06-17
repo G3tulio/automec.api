@@ -1,28 +1,63 @@
--- automec_desenv.grupo (Grupo de produtos) definição
 
-select * from automec_desenv.grupo g;
 
-select * from automec_desenv.grupo g where g.des_grupo like concat("%", "Sistema", "%")
 
-insert into automec_desenv.grupo (des_grupo)
+-- automec_desenv.categoria
+
+select * from automec_desenv.subcategoria sc;
+
+select * from automec_desenv.subcategoria sc where sc.des_subcategoria like concat("%", "Sistema", "%")
+
+insert into automec_desenv.subcategoria (des_subcategoria, cod_categoria)
 values
+('Correia dentada', 1), ('vela, coxim', 1), ('bobina', 1), ('filtro de óleo', 1),
+('Radiador', 2), ('válvula termostática', 2), ('bomba d"água', 2),
+('Pastilhas', 3), ('discos', 3), ('cilindro mestre', 3), ('fluido de freio', 3),
+('Amortecedor', 4), ('mola', 4), ('pivô', 4), ('braço oscilante', 4), ('terminal', 4),
+('Alternador', 5), ('farol', 5), ('lâmpadas', 5), ('bateria', 5), ('sensores', 5),
+('Bomba de combustível', 6), ('bico injetor', 6), ('filtro de ar', 6),
+('Kit embreagem', 7), ('câmbio', 7), ('eixo homocinético', 7),
+('Catalisador', 8), ('sonda lambda', 8), ('silencioso', 8),
+('Botões', 9), ('interruptores', 9), ('painel', 9), ('bancos', 9),
+('Parachoque', 10), ('retrovisor', 10), ('para-lamas', 10), ('maçaneta', 10),
+('Compressor', 11), ('condensador', 11), ('filtro antipólen', 11),
+('Palheta', 12), ('motor do limpador', 12), ('reservatório de água', 12);
+
+create table automec_desenv.subcategoria (
+	cod_subcategoria int(11) not null auto_increment,
+	des_subcategoria varchar(100) not null,
+	cod_categoria int(11) not null,	
+	primary key (cod_subcategoria),
+	unique key subcategoria_des_subcategoria_uk (des_subcategoria),
+	constraint subcategoria_cod_categoria_fk foreign key (cod_categoria) references categoria (cod_categoria)
+);
+
+-
+-- automec_desenv.categoria
+
+select * from automec_desenv.categoria c;
+
+select * from automec_desenv.categoria c where c.des_categoria like concat("%", "Sistema", "%")
+
+insert into automec_desenv.categoria (des_categoria)
+values
+('Motor e Transmissão'),
+('Arrefecimento'),
 ('Sistema de Freios'),
 ('Suspensão e Direção'),
-('Sistema de Ignição'),
-('Filtros e Lubrificantes'),
-('Sistema de Arrefecimento'),
-('Componentes Elétricos'),
-('Embreagens e Transmissões'),
-('Sistemas de Exaustão'),
-('Peças de Motor'),
+('Elétrico e Iluminação'),
+('Combustível e Admissão'),
 ('Transmissão e Embreagem'),
-('Acessórios e Equipamentos');
+('Escape e Emissões'),
+('Interior e Cabine'),
+('Lataria e Acabamento'),
+('Ar-condicionado'),
+('Limpadores e Visibilidade');
 
-create table automec_desenv.grupo (
-	cod_grupo int(11) not null auto_increment,
-	des_grupo varchar(100) not null,
-	primary key (cod_grupo),
-	unique key grupo_des_grupo_uk (des_grupo)
+create table automec_desenv.categoria (
+	cod_categoria int(11) not null auto_increment,
+	des_categoria varchar(100) not null,
+	primary key (cod_categoria),
+	unique key categoria_des_categoria_uk (des_categoria)
 );
 
 -- automec_desenv.fornecedor
