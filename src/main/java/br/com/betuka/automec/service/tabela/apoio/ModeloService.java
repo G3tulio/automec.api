@@ -36,7 +36,7 @@ public class ModeloService {
 		}
 		
 		if (modeloDTO.getMarca().getCodMarca() == 0) {
-			throw new ValidationException(Constants.MARCAR_CODIGO_N_INFRORMADO);
+			throw new ValidationException(Constants.MARCA_CODIGO_N_INFORMADO);
 		}
 		
 		this.marcaService.pesquisarCodigo(modeloDTO.getMarca().getCodMarca());

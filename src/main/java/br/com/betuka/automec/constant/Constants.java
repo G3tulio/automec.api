@@ -13,7 +13,16 @@ public class Constants {
 	public static final String OCORREU_ERRO = "Ocorreu erro: ";
 	
 	/*
-	 * Constants Fabricante
+	 * Constants Categoria
+	 */
+	public static final String CATEGORIA_INEXISTENTE = "Marca inexistente.";
+	public static final String CATEGORIA_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
+	public static final String CATEGORIA_JA_CADASTRADA = "Marca já cadastrada.";
+	public static final String CATEGORIA_CODIGO_N_INFRORMADO = "Informe o código da marca.";
+	public static final String CATEGORIA_UTILIZADA = "Não foi possível excluir a marca. Existem registros relacionados.";
+	
+	/*
+	 * Constants Fornecedor
 	 */
 	public static final String FORNECEDOR_INEXISTENTE = "Fornecedor inexistente.";
 	public static final String FORNECEDOR_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
@@ -78,7 +87,7 @@ public class Constants {
 	public static final String MARCA_INEXISTENTE = "Marca inexistente.";
 	public static final String MARCA_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
 	public static final String MARCA_JA_CADASTRADA = "Marca já cadastrada.";
-	public static final String MARCAR_CODIGO_N_INFRORMADO = "Informe o código da marca.";
+	public static final String MARCA_CODIGO_N_INFORMADO = "Informe o código da marca.";
 	public static final String MARCA_UTILIZADA = "Não foi possível excluir a marca. Existem registros relacionados.";
 	
 	/*
