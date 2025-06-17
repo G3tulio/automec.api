@@ -17,7 +17,7 @@ public interface MarcaRepository extends JpaRepository<MarcaEntity, Integer> {
 	@Query("select m from MarcaEntity m where m.desMarca like concat('%', :desMarcar, '%')")
 	List<MarcaEntity> buscarDescricao(@Param("desMarcar") String desMarca);
 	
-	@Query("select (count(*) > 0) as existe from ModeloEntity m where m.marca.codMarca = :codMarca")
+	@Query("select (count(*) > 0) as existe from ModeloEntity m where m.marcaEntity.codMarca = :codMarca")
 	boolean existeModeloMarca(@Param("codMarca") int codMarca);
 	
 }

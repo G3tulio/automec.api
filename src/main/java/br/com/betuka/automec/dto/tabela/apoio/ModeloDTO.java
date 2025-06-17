@@ -10,22 +10,22 @@ public class ModeloDTO {
 
 	private int codModelo;
 	private String desModelo;
-	private MarcaDTO marca;
+	private MarcaDTO marcaDTO;
 	
 	public ModeloDTO() {
 		super();
 	}
 
-	public ModeloDTO(int codModelo, String desModelo, MarcaDTO marca) {
+	public ModeloDTO(int codModelo, String desModelo, MarcaDTO marcaDTO) {
 		super();
 		this.codModelo = codModelo;
 		this.desModelo = desModelo;
-		this.marca = marca;
+		this.marcaDTO = marcaDTO;
 	}
 	
 	public ModeloDTO(ModeloEntity modeloEntity) {
 		BeanUtils.copyProperties(modeloEntity, this);
-		this.marca = new MarcaDTO(modeloEntity.getMarca());
+		this.marcaDTO = new MarcaDTO(modeloEntity.getMarca());
 	}
 	
 	public static List<ModeloDTO> toList(List<ModeloEntity> lista) {
@@ -49,10 +49,10 @@ public class ModeloDTO {
 	}
 	
 	public MarcaDTO getMarca() {
-		return marca;
+		return marcaDTO;
 	}
 	
-	public void setMarca(MarcaDTO marca) {
-		this.marca = marca;
+	public void setMarca(MarcaDTO marcaDTO) {
+		this.marcaDTO = marcaDTO;
 	}
 }

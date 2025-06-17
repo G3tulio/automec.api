@@ -32,23 +32,23 @@ public class ModeloEntity implements Serializable {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(nullable = false, name = "cod_marca", unique = false)
-	private MarcaEntity marca;
+	private MarcaEntity marcaEntity;
 	
 	public ModeloEntity() {
 		super();
 	}
 
-	public ModeloEntity(int codModelo, String desModelo, MarcaEntity marca) {
+	public ModeloEntity(int codModelo, String desModelo, MarcaEntity marcaEntity) {
 		super();
 		this.codModelo = codModelo;
 		this.desModelo = desModelo;
-		this.marca = marca;
+		this.marcaEntity = marcaEntity;
 	}
 	
 	public ModeloEntity(ModeloDTO modeloDTO) {
 		super();
 		BeanUtils.copyProperties(modeloDTO, this);
-		this.marca = new MarcaEntity(modeloDTO.getMarca());
+		this.marcaEntity = new MarcaEntity(modeloDTO.getMarca());
 	}
 
 	public int getCodModelo() {
@@ -68,16 +68,16 @@ public class ModeloEntity implements Serializable {
 	}
 	
 	public MarcaEntity getMarca() {
-		return marca;
+		return marcaEntity;
 	}
 	
-	public void setMarca(MarcaEntity marca) {
-		this.marca = marca;
+	public void setMarca(MarcaEntity marcaEntity) {
+		this.marcaEntity = marcaEntity;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codModelo, desModelo, marca);
+		return Objects.hash(codModelo, desModelo, marcaEntity);
 	}
 
 	@Override
@@ -91,11 +91,11 @@ public class ModeloEntity implements Serializable {
 		ModeloEntity other = (ModeloEntity) obj;
 		return Objects.equals(codModelo, other.codModelo) && 
 			   Objects.equals(desModelo, other.desModelo) &&
-			   Objects.equals(marca, other.marca);
+			   Objects.equals(marcaEntity, other.marcaEntity);
 	}
 
 	@Override
 	public String toString() {
-		return "ModeloEntity [codModelo=" + codModelo + ", desModelo=" + desModelo + ", marca=" + marca.toString() + "]";
+		return "ModeloEntity [codModelo=" + codModelo + ", desModelo=" + desModelo + ", marca=" + marcaEntity.toString() + "]";
 	}
 }

@@ -12,13 +12,21 @@ import br.com.betuka.automec.model.cadastro.VeiculoEntity;
 public class VeiculoDTO {
 	
 	private int codVeiculo;
-	private ModeloDTO modelo;
+	
+	private ModeloDTO modeloDTO;
+	
 	private String desCor;
+	
 	private String nroPlaca;
+	
 	private String anoVeiculo;
+	
 	private String desMotor;
+	
 	private int qtdKmVeiculo;
+	
 	private int qtdKmDia;
+	
 	private Date dtaCadastro;
 	
 	public VeiculoDTO() {
@@ -28,12 +36,12 @@ public class VeiculoDTO {
 	public VeiculoDTO(VeiculoEntity veiculoEntity) {
 		super();
 		BeanUtils.copyProperties(veiculoEntity, this);
-		this.modelo = new ModeloDTO(veiculoEntity.getModelo());
+		this.modeloDTO = new ModeloDTO(veiculoEntity.getModelo());
 	}
 
 	public VeiculoDTO(
 				int codVeiculo, 
-				ModeloDTO modelo, 
+				ModeloDTO modeloDTO, 
 				String desCor, 
 				String nroPlaca, 
 				String anoVeiculo,
@@ -43,7 +51,7 @@ public class VeiculoDTO {
 				Date dtaCadastro) {
 		super();
 		this.codVeiculo = codVeiculo;
-		this.modelo = modelo;
+		this.modeloDTO = modeloDTO;
 		this.desCor = desCor;
 		this.nroPlaca = nroPlaca;
 		this.anoVeiculo = anoVeiculo;
@@ -66,11 +74,11 @@ public class VeiculoDTO {
 	}
 
 	public ModeloDTO getModelo() {
-		return modelo;
+		return modeloDTO;
 	}
 
-	public void setModelo(ModeloDTO modelo) {
-		this.modelo = modelo;
+	public void setModelo(ModeloDTO modeloDTO) {
+		this.modeloDTO = modeloDTO;
 	}
 
 	public String getDesCor() {
