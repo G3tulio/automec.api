@@ -2,11 +2,13 @@ package br.com.betuka.automec.service.tabela.apoio;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
+import br.com.betuka.automec.dto.tabela.apoio.MarcaDTO;
 import br.com.betuka.automec.dto.tabela.apoio.ModeloDTO;
 import br.com.betuka.automec.dto.tabela.apoio.VWModelosMarcaDTO;
 import br.com.betuka.automec.exception.ValidationException;
@@ -40,6 +42,24 @@ public class ModeloService {
 		}
 		
 		this.marcaService.pesquisarCodigo(modeloDTO.getMarca().getCodMarca());
+		
+		ModeloDTO oModeloDTO = null;
+		
+		try {
+			oModeloDTO = this.pesquisarDescricao(modeloDTO.getDesModelo());
+		} catch (ValidationException e) {
+			// Neste caso não trata a exceção
+		}
+		
+		if (Objects.nonNull(oModeloDTO)) {
+			if (modeloDTO.getCodModelo() == 0) {
+				throw new ValidationException(Constants.MODELO_JA_CADASTRADO);
+			} else {
+				if (modeloDTO.getCodModelo() != oModeloDTO.getCodModelo()) {
+					throw new ValidationException(Constants.MODELO_JA_CADASTRADO);
+				}
+			}
+		}
 	}
 	
 	public void gravar(ModeloDTO modeloDTO) throws ValidationException, Exception {

@@ -13,13 +13,28 @@ public class Constants {
 	public static final String OCORREU_ERRO = "Ocorreu erro: ";
 	
 	/*
-	 * Constants Categoria
+	 * Constants Marca - Modelo
 	 */
-	public static final String CATEGORIA_INEXISTENTE = "Marca inexistente.";
-	public static final String CATEGORIA_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
-	public static final String CATEGORIA_JA_CADASTRADA = "Marca já cadastrada.";
-	public static final String CATEGORIA_CODIGO_N_INFRORMADO = "Informe o código da marca.";
-	public static final String CATEGORIA_UTILIZADA = "Não foi possível excluir a marca. Existem registros relacionados.";
+	public static final String SISTEMA_COMPONENTE_INEXISTENTE = "Sistma e componente inexistente.";
+	public static final String SISTEMA_COMPONENTE_JA_CADASTRO = "Componente já cadastrado para este Sistema.";
+	
+	/*
+	 * Constants Modelo
+	 */
+	public static final String COMPONENTE_INEXISTENTE = "Compoente inexistente.";
+	public static final String COMPONENTE_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
+	public static final String COMPONENTE_CODIGO_N_INFRORMADO = "Informe o código do compoente.";
+	public static final String COMPONENTE_UTILIZADO = "Não foi possível excluir o compoente. Existem registros relacionados.";
+	public static final String COMPONENTE_JA_CADASTRADO = "Componente já cadastrado.";
+	
+	/*
+	 * Constants Sistema
+	 */
+	public static final String SISTEMA_INEXISTENTE = "Sistema inexistente.";
+	public static final String SISTEMA_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
+	public static final String SISTEMA_JA_CADASTRADA = "Sistema já cadastrado.";
+	public static final String SISTEMA_CODIGO_N_INFORMADO = "Informe o código do sistema.";
+	public static final String SISTEMA_UTILIZADA = "Não foi possível excluir o sistema. Existem registros relacionados.";
 	
 	/*
 	 * Constants Fornecedor
@@ -34,12 +49,6 @@ public class Constants {
 	public static final String FABRICANTE_INEXISTENTE = "Fabricante inexistente.";
 	public static final String FABRICANTE_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
 	public static final String FABRICANTE_JA_CADASTRADO = "Fabricante já cadastrado.";
-	
-	/*
-	 * Constants Grupo de produtos e serviços
-	 */
-	public static final String GRUPO_INEXISTENTE = "Grupo inexistente.";
-	public static final String GRUPO_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
 	
 	/*
 	 * Constants Cliente
@@ -68,7 +77,7 @@ public class Constants {
 	public static final String VEICULO_PLACA_JA_CADASTRADA = "Veículo já cadastrado com este número de placa.";
 	
 	/*
-	 * Constants Marca, Modelo
+	 * Constants Marca - Modelo
 	 */
 	public static final String MARCA_MODELO_INEXISTENTE = "Marca e modelo inexistente.";
 	public static final String MARCA_MODELO_JA_CADASTRO = "Modelo já cadastrado para esta marca.";
@@ -80,6 +89,7 @@ public class Constants {
 	public static final String MODELO_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
 	public static final String MODELO_CODIGO_N_INFRORMADO = "Informe o código do modelo.";
 	public static final String MODELO_UTILIZADO = "Não foi possível excluir o modelo. Existem registros relacionados.";
+	public static final String MODELO_JA_CADASTRADO = "Modelo já cadastrado.";
 	
 	/*
 	 * Constants Marca

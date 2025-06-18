@@ -1,63 +1,109 @@
 
 
 
--- automec_desenv.categoria
+-- automec_desenv.componente
 
-select * from automec_desenv.subcategoria sc;
+select * from automec_desenv.componente c;
 
-select * from automec_desenv.subcategoria sc where sc.des_subcategoria like concat("%", "Sistema", "%")
+select * from automec_desenv.componente c where c.des_componente like concat("%", "ar", "%")
 
-insert into automec_desenv.subcategoria (des_subcategoria, cod_categoria)
+insert into automec_desenv.componente (des_componente, cod_sistema)
 values
-('Correia dentada', 1), ('vela, coxim', 1), ('bobina', 1), ('filtro de óleo', 1),
-('Radiador', 2), ('válvula termostática', 2), ('bomba d"água', 2),
-('Pastilhas', 3), ('discos', 3), ('cilindro mestre', 3), ('fluido de freio', 3),
-('Amortecedor', 4), ('mola', 4), ('pivô', 4), ('braço oscilante', 4), ('terminal', 4),
-('Alternador', 5), ('farol', 5), ('lâmpadas', 5), ('bateria', 5), ('sensores', 5),
-('Bomba de combustível', 6), ('bico injetor', 6), ('filtro de ar', 6),
-('Kit embreagem', 7), ('câmbio', 7), ('eixo homocinético', 7),
-('Catalisador', 8), ('sonda lambda', 8), ('silencioso', 8),
-('Botões', 9), ('interruptores', 9), ('painel', 9), ('bancos', 9),
-('Parachoque', 10), ('retrovisor', 10), ('para-lamas', 10), ('maçaneta', 10),
-('Compressor', 11), ('condensador', 11), ('filtro antipólen', 11),
-('Palheta', 12), ('motor do limpador', 12), ('reservatório de água', 12);
+('Motor a combustão interna (gasolina, etanol, diesel, gás)', 1),
+('Admissão e escape', 1),
+('Alimentação de combustível', 1),
+('Ignição', 1),
+('Arrefecimento (radiador, bomba d’água)', 1),
+('Lubrificação', 1),
+('Embreagem (ou conversor de torque em câmbios automáticos)', 2),
+('Caixa de câmbio (manual ou automática)', 2),
+('Eixo cardã (veículos de tração traseira)', 2),
+('Diferencial', 2),
+('Semi-eixos', 2),
+('Molas', 3),
+('Amortecedores', 3),
+('Barras estabilizadoras', 3),
+('Braços e buchas de suspensão', 3),
+('Freios a disco e/ou tambor', 4),
+('Pinças, lonas e pastilhas', 4),
+('Cilindro mestre', 4),
+('ABS (antitravamento)', 4),
+('Freio de estacionamento', 4),
+('Caixa de direção (mecânica, hidráulica ou elétrica)', 5),
+('Coluna e volante', 5),
+('Braços e terminais de direção', 5),
+('Bateria', 6),
+('Alternador', 6),
+('Chicote elétrico', 6),
+('Unidades de controle eletrônico (ECUs)', 6),
+('Iluminação interna e externa', 6),
+('Sensores e atuadores', 6),
+('Ar-condicionado', 7),
+('Aquecedor', 7),
+('Ventilação', 7),
+('Bomba de combustível', 8),
+('Injetores', 8),
+('Tanque', 8),
+('Filtros', 8),
+('Coletor de escape', 9),
+('Catalisador', 9),
+('Silencioso', 9),
+('Sonda lambda', 9),
+('Airbags', 10),
+('Cintos de segurança', 10),
+('Estrutura de deformação programada', 10),
+('Controles de tração e estabilidade (TCS/ESC)', 10),
+('Velocímetro, conta-giros, indicadores', 11),
+('Luzes-espia (check engine, ABS, etc.)', 11),
+('Computador de bordo', 11),
+('Rádio, multimídia, bluetooth, GPS', 12),
+('Interface com celular (Android Auto, Apple CarPlay)', 12),
+('Estrutura externa', 13),
+('Portas, capô, para-choques', 13),
+('Vidros, retrovisores', 13),
+('Estofamento e painéis internos', 13),
+('Rodas e pneus', 14),
+('Calibragem', 14),
+('Monitoramento da pressão dos pneus (TPMS)', 14);
 
-create table automec_desenv.subcategoria (
-	cod_subcategoria int(11) not null auto_increment,
-	des_subcategoria varchar(100) not null,
-	cod_categoria int(11) not null,	
-	primary key (cod_subcategoria),
-	unique key subcategoria_des_subcategoria_uk (des_subcategoria),
-	constraint subcategoria_cod_categoria_fk foreign key (cod_categoria) references categoria (cod_categoria)
+create table automec_desenv.componente (
+	cod_componente int(11) not null auto_increment,
+	des_componente varchar(100) not null,
+	cod_sistema int(11) not null,	
+	primary key (cod_componente),
+	unique key componente_des_componente_uk (des_componente),
+	constraint componente_cod_sistema_fk foreign key (cod_sistema) references sistema (cod_sistema)
 );
 
 -
 -- automec_desenv.categoria
 
-select * from automec_desenv.categoria c;
+select * from automec_desenv.sistema s;
 
-select * from automec_desenv.categoria c where c.des_categoria like concat("%", "Sistema", "%")
+select * from automec_desenv.sistema s where s.des_sistema like concat("%", "Ali", "%")
 
-insert into automec_desenv.categoria (des_categoria)
+insert into automec_desenv.sistema (des_sistema)
 values
-('Motor e Transmissão'),
-('Arrefecimento'),
-('Sistema de Freios'),
-('Suspensão e Direção'),
-('Elétrico e Iluminação'),
-('Combustível e Admissão'),
-('Transmissão e Embreagem'),
-('Escape e Emissões'),
-('Interior e Cabine'),
-('Lataria e Acabamento'),
-('Ar-condicionado'),
-('Limpadores e Visibilidade');
+('Propulsão ou Motorização'),
+('Transmissão'),
+('Suspensão'),
+('Freios'),
+('Direção'),
+('Elétrico e Eletrônico'),
+('Climatização'),
+('Alimentação de Combustível'),
+('Escape'),
+('Segurança'),
+('Instrumentação e Painel'),
+('Entretenimento e Conectividade'),
+('Carroceria e Acabamento'),
+('Rodagem');
 
-create table automec_desenv.categoria (
-	cod_categoria int(11) not null auto_increment,
-	des_categoria varchar(100) not null,
-	primary key (cod_categoria),
-	unique key categoria_des_categoria_uk (des_categoria)
+create table automec_desenv.sistema (
+	cod_sistema int(11) not null auto_increment,
+	des_sistema varchar(100) not null,
+	primary key (cod_sistema),
+	unique key sistema_des_sistema_uk (des_sistema)
 );
 
 -- automec_desenv.fornecedor
@@ -552,97 +598,81 @@ values
 ('Cronos', 1),
 ('Pulse', 1),
 ('Toro', 1),
-
 -- Hyundai
 ('HB20', 2),
 ('Creta', 2),
 ('Tucson', 2),
 ('Santa Fe', 2),
-
 -- Volkswagen
 ('Polo', 3),
 ('T-Cross', 3),
 ('Nivus', 3),
 ('Virtus', 3),
-
 -- Chevrolet
 ('Onix', 4),
 ('Tracker', 4),
 ('S10', 4),
 ('Spin', 4),
-
 -- Honda
 ('Civic', 5),
 ('City', 5),
 ('HR-V', 5),
 ('Fit', 5),
-
 -- Nissan
 ('Kicks', 6),
 ('Versa', 6),
 ('Sentra', 6),
 ('Frontier', 6),
-
 -- Renault
 ('Kwid', 7),
 ('Duster', 7),
 ('Captur', 7),
 ('Sandero', 7),
-
 -- Peugeot
 ('208', 8),
 ('2008', 8),
 ('3008', 8),
 ('5008', 8),
-
 -- Citroën
 ('C3', 9),
 ('C4 Cactus', 9),
 ('Aircross', 9),
 ('C5 Aircross', 9),
-
 -- Jeep
 ('Renegade', 10),
 ('Compass', 10),
 ('Commander', 10),
 ('Wrangler', 10),
-
 -- Mitsubishi
 ('L200', 11),
 ('Outlander', 11),
 ('ASX', 11),
 ('Eclipse Cross', 11),
-
 -- Kia
 ('Sportage', 12),
 ('Seltos', 12),
 ('Cerato', 12),
 ('Stonic', 12),
-
 -- Mercedes-Benz
 ('Classe A', 13),
 ('Classe C', 13),
 ('GLA', 13),
 ('GLC', 13),
-
 -- BMW
 ('320i', 14),
 ('X1', 14),
 ('X3', 14),
 ('X5', 14),
-
 -- Audi
 ('A3', 15),
 ('A4', 15),
 ('Q3', 15),
 ('Q5', 15),
-
 -- Chery
 ('Tiggo 3x', 16),
 ('Tiggo 5x', 16),
 ('Tiggo 7', 16),
 ('Tiggo 8', 16),
-
 -- JAC Motors
 ('T40', 17),
 ('T50', 17),

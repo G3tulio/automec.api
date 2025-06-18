@@ -16,21 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.tabela.apoio.CategoriaDTO;
+import br.com.betuka.automec.dto.tabela.apoio.ComponenteDTO;
+import br.com.betuka.automec.dto.tabela.apoio.VWComponentesSistemaDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.tabela.apoio.CategoriaService;
+import br.com.betuka.automec.service.tabela.apoio.ComponenteService;
 
 @RestController
-@RequestMapping(value = "automec/categoria/")
-public class CategoriaController {
+@RequestMapping(value = "automec/componente/")
+public class ComponenteController {
 
 	@Autowired
-	private CategoriaService categoriaService;
+	private ComponenteService componenteService;
 	
 	@GetMapping(value = "listar")
-	public ResponseEntity<ResponseDTO<List<CategoriaDTO>>> listar() {
+	public ResponseEntity<ResponseDTO<List<ComponenteDTO>>> listar() {
 		try {
-			List<CategoriaDTO> lista = this.categoriaService.listar();
+			List<ComponenteDTO> lista = this.componenteService.listar();
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -40,9 +41,9 @@ public class CategoriaController {
 	}
 	
 	@PostMapping(value = "adicionar")
-	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody CategoriaDTO categoriaDTO) {
+	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody ComponenteDTO componenteDTO) {
 		try {
-			this.categoriaService.gravar(categoriaDTO);
+			this.componenteService.gravar(componenteDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -56,9 +57,9 @@ public class CategoriaController {
 	}
 	
 	@PutMapping(value = "atualizar")
-	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody CategoriaDTO categoriaDTO) {
+	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody ComponenteDTO componenteDTO) {
 		try {
-			this.categoriaService.gravar(categoriaDTO);
+			this.componenteService.gravar(componenteDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -71,13 +72,13 @@ public class CategoriaController {
 		}
 	}
 	
-	@DeleteMapping(value = "deletar/{codCategoria}")
-	public ResponseEntity<ResponseDTO<Void>> deletar(@PathVariable("codCategoria") int pCodCategoria) {
-    	try {
-            this.categoriaService.deletar(pCodCategoria);
-            return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
+	@DeleteMapping(value = "deletar/{codComponente}")
+	public ResponseEntity<ResponseDTO<Void>> deletar(@PathVariable("codComponente") int pCodComponente) {
+		try {
+			this.componenteService.deletar(pCodComponente);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
 	                		                e.getMessage()));
 		} catch (Exception e) {
@@ -87,11 +88,11 @@ public class CategoriaController {
 		}
 	}
 	
-	@GetMapping(value = "pesquisarCodigo/{codCategoria}")
-	public ResponseEntity<ResponseDTO<CategoriaDTO>> pesquisarCodigo(@PathVariable("codCategoria") int pCodCategoria) {
+	@GetMapping(value = "pesquisarCodigo/{codComponente}")
+	public ResponseEntity<ResponseDTO<ComponenteDTO>> pesquisarCodigo(@PathVariable("codComponente") int pCodComponente) {
 		try {
-			CategoriaDTO categoriaDTO = this.categoriaService.pesquisarCodigo(pCodCategoria);
-			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, categoriaDTO));
+			ComponenteDTO componenteDTO = this.componenteService.pesquisarCodigo(pCodComponente);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, componenteDTO));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
@@ -102,12 +103,12 @@ public class CategoriaController {
 	                		                Constants.OCORREU_ERRO + e.getMessage()));
 	    }
 	}
-	                     
-	@GetMapping(value = "pesquisarDescricao/{desCategoria}")
-	public ResponseEntity<ResponseDTO<CategoriaDTO>> pesquisarDescricao(@PathVariable("desCategoria") String pDesCategoria) {
+	
+	@GetMapping(value = "pesquisarDescricao/{desComponente}")
+	public ResponseEntity<ResponseDTO<ComponenteDTO>> pesquisarDescricao(@PathVariable("desComponente") String pDesComponente) {
 		try {
-			CategoriaDTO categoriaDTO = this.categoriaService.pesquisarDescricao(pDesCategoria);
-			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, categoriaDTO));
+			ComponenteDTO componenteDTO = this.componenteService.pesquisarDescricao(pDesComponente);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, componenteDTO));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
@@ -118,13 +119,17 @@ public class CategoriaController {
 	                		                Constants.OCORREU_ERRO + e.getMessage()));
 	    }
 	}
-	    
-	@GetMapping(value = "buscarDescricao/{desCategoria}")
-	public ResponseEntity<ResponseDTO<List<CategoriaDTO>>> buscarDescricao(@PathVariable("desCategoria") String pDesCategoria) {
+	
+	@GetMapping(value = "buscarComponentesPorSistema/{codSistema}")
+	public ResponseEntity<ResponseDTO<List<VWComponentesSistemaDTO>>> buscarComponentesPorSistema(@PathVariable("codSistema") int pCodSistema) {
 		try {
-			List<CategoriaDTO> lista = this.categoriaService.buscarDescricao(pDesCategoria);
+			List<VWComponentesSistemaDTO> lista = this.componenteService.buscarComponentesPorSistema(pCodSistema);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
-		} catch (Exception e) {
+		} catch (ValidationException e) {
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+		                		                e.getMessage()));
+	    } catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
 	                		                Constants.OCORREU_ERRO + e.getMessage()));
