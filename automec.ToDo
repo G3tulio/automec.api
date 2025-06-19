@@ -1,14 +1,22 @@
 --- Automec To do List
 ---------------------------------------------------------------------
 
+13. Funcionalidade: Kit
 
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar x                  -- Testar quando o kit estiver relacionado com peça (Kit -> Peça)
+	e. Pesquisar código
+	f. Pesquisar descrição
+	g. Buscar descrição
 	
 12. Funcionalidade: Componete x
 
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar x                  -- Testar quando o segmento estiver relacionado a uma peça (Segmento -> peça)
+	d. Deletar x                  -- Testar quando o componente estiver relacionado com peça (Componente -> Peça)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Buscar descrição
@@ -19,7 +27,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o sistema estiver relacionado a um segmento (Sistema -> segmento)
+	d. Deletar                  -- Testar quando o sistema estiver relacionado com componente (Sistema -> Componente)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Buscar descrição
@@ -29,7 +37,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o fabricante estiver relacionado a uma peça (Fabricante -> peça)
+	d. Deletar                  -- Testar quando o fornecedor estiver relacionado com peça (Fornecedor -> Peça)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Busara descrição
@@ -39,7 +47,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o fabricante estiver relacionado a uma peça (Fabricante -> peça)
+	d. Deletar                  -- Testar quando o fabricante estiver relacionado com peça (Fabricante -> Peça)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Busara descrição

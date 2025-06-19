@@ -13,6 +13,15 @@ public class Constants {
 	public static final String OCORREU_ERRO = "Ocorreu erro: ";
 	
 	/*
+	 * Constants Kit
+	 */
+	public static final String KIT_INEXISTENTE = "Kit inexistente.";
+	public static final String KIT_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
+	public static final String KIT_JA_CADASTRADO = "Kit já cadastrado.";
+	public static final String KIT_CODIGO_N_INFORMADO = "Informe o código do kit.";
+	public static final String KIT_UTILIZADO = "Não foi possível excluir o kit. Existem registros relacionados.";
+	
+	/*
 	 * Constants Marca - Modelo
 	 */
 	public static final String SISTEMA_COMPONENTE_INEXISTENTE = "Sistma e componente inexistente.";

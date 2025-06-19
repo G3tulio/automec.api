@@ -1,5 +1,180 @@
+-- automec_desenv.item_kit
 
+select * from automec_desenv.item_kit ik order by ik.cod_kit, ik.cod_produto;
 
+create table automec_desenv.item_kit (
+	cod_kit int(11) not null,
+	cod_produto int(11) not null,
+	primary key (cod_kit, cod_produto),
+	constraint item_kit_cod_produto foreign key (cod_produto) references produto (cod_produto)
+);
+
+-- automec_desenv.kit
+
+select * from automec_desenv.kit k;
+
+select * from automec_desenv.kit k where k.des_kit like concat("%", "Ali", "%")
+
+insert into automec_desenv.kit (des_kit)
+values
+('Troca de Óleo e Filtros'),
+('Revisão Periódica de 10.000 km'),
+('Alinhamento e Balanceamento'),
+('Revisão de Freios'),
+('Higienização e Revisão do Ar-Condicionado'),
+('Correia Dentada e Tensionador'),
+('Iluminação e Sinalização'),
+('Sistema de Partida (Bateria e Alternador)'),
+('Suspensão Dianteira'),
+('Revisão Completa de Motor (Preventiva)');
+
+/* Relação de kits peças e serviços 
+ * 
+ * 
+Kit Troca de Óleo e Filtros
+
+	4 ou 5 litros de óleo lubrificante
+	Filtro de óleo
+	Filtro de ar
+	Filtro de combustível (opcional)
+
+	Serviços:
+		Troca do óleo
+		Substituição dos filtros
+		Verificação de vazamentos e nível de fluídos
+
+Revisão Periódica de 10.000 km
+
+	Óleo do motor
+	Filtro de óleo
+	Filtro de ar
+	Filtro de cabine
+	Velas de ignição (se aplicável)
+	
+	Serviços:
+	
+		Troca de óleo e filtros
+		Checagem de freios, suspensão e pneus
+		Verificação de luzes, bateria, nível de fluídos e scan eletrônico
+
+Alinhamento e Balanceamento
+
+	Contrapesos
+	
+	Serviços:
+		
+		Alinhamento das rodas
+		Balanceamento das rodas
+		Verificação da suspensão e pneus
+
+Revisão de Freios
+
+	Pastilhas de freio
+	Discos de freio (se necessário)
+	Fluído de freio
+
+	Serviços:
+	
+		Troca das pastilhas
+		Usinagem ou troca dos discos
+		Troca do fluido de freio
+		Sangria do sistema
+
+Higienização e Revisão do Ar-Condicionado
+
+	Filtro de cabine
+	Gás refrigerante (R134a ou R1234yf)
+	Higienizador bactericida
+	
+	Serviços:
+	
+		Substituição do filtro
+		Limpeza dos dutos
+		Recarga de gás
+		Checagem de compressor e condensador
+
+Correia Dentada e Tensionador
+
+	Correia dentada
+	Tensionador
+	Polias
+	Bomba d’água (se necessário)
+	
+	Serviços:
+	
+		Remoção e substituição da correia
+		Ajuste de sincronismo
+		Substituição da bomba d’água (se necessário)
+
+Iluminação e Sinalização
+
+	Lâmpadas H7, H4, Pingo, LED, etc.
+	Fusíveis (se aplicável)
+	
+	Serviços:
+	
+		Substituição das lâmpadas
+		Verificação do sistema elétrico
+		Ajuste dos fachos dos faróis
+
+Sistema de Partida (Bateria e Alternador)
+
+	Bateria
+	Cabos ou terminais (se necessário)
+	
+	Serviços:
+	
+		Teste de bateria e alternador
+		Substituição da bateria
+		Limpeza dos terminais
+
+Suspensão Dianteira
+
+	Amortecedores dianteiros
+	Coxins
+	Batentes e kits de reparo
+	Buchas
+	
+	Serviços:
+	
+		Substituição dos amortecedores
+		Revisão dos coxins e buchas
+		Alinhamento (pós-serviço)
+
+Revisão Completa de Motor (Preventiva)
+
+	Óleo e filtros
+	Velas
+	Correia dentada
+	Jogo de juntas
+	Fluídos diversos (freio, arrefecimento)
+	
+	Serviços:
+	
+		Troca de todos os itens
+		Limpeza do sistema de arrefecimento
+		Análise por scanner
+		Ajuste de válvulas (se necessário)
+*/
+
+create table automec_desenv.kit (
+	cod_kit int(11) not null auto_increment,
+	des_kit varchar(100) not null,
+	primary key (cod_kit),
+	unique key kit_des_kit_uk (des_kit)
+);
+
+-- automec_desenv.vw_componentes_sistena
+
+select vwcs.cod_componente, vwcs.des_componente from automec_desenv.vw_componentes_sistena vwcs where vwcs.cod_sistema = 2;
+
+select * from automec_desenv.vw_componentes_sistena vwcs where vwcs.cod_sistema = 2;
+
+create or replace view automec_desenv.vw_componentes_sistena as
+	select componente.cod_componente, componente.des_componente, sistema.cod_sistema
+	  from automec_desenv.componente as componente
+	  inner join automec_desenv.sistema as sistema on sistema.cod_sistema = componente.cod_sistema
+	  order by componente.des_componente;
 
 -- automec_desenv.componente
 
@@ -569,12 +744,9 @@ create table automec_desenv.veiculo (
 
 -- automec_desenv.vw_modelos_marca
 
-select vmm.cod_modelo, vmm.des_modelo
-  from automec_desenv.vw_modelos_marca vmm 
- where cod_marca = 1;
+select vmm.cod_modelo, vmm.des_modelo from automec_desenv.vw_modelos_marca vmm where cod_marca = 1;
 
-select * from automec_desenv.vw_modelos_marca vmm 
- where cod_marca = 1;
+select * from automec_desenv.vw_modelos_marca vmm where cod_marca = 1;
 
 create or replace view automec_desenv.vw_modelos_marca as
 	select modelo.cod_modelo, modelo.des_modelo, marca.cod_marca
