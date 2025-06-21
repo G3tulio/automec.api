@@ -1,17 +1,70 @@
--- automec_desenv.item_kit
 
-select * from automec_desenv.item_kit ik order by ik.cod_kit, ik.cod_produto;
 
-create table automec_desenv.item_kit (
+
+-- automec_desenv.kit_produto
+
+select * from automec_desenv.kit_produto kp order by cod_kit, cod_produto;
+
+-- Massa de dados para o cadastro kit de produtos
+
+create table automec_desenv.kit_produto (
 	cod_kit int(11) not null,
 	cod_produto int(11) not null,
 	primary key (cod_kit, cod_produto),
-	constraint item_kit_cod_produto foreign key (cod_produto) references produto (cod_produto)
+	constraint kit_produto_cod_kit foreign key (cod_kit) references kit (cod_kit),
+	constraint kit_produto_cod_produto foreign key (cod_produto) references produto (cod_produto)
 );
+
+-- automec_desenv.produto
+
+select * from automec_desenv.produto_veiculo pv;
+
+-- Massa de dados para o cadastro de produtos por veículo
+
+create table automec_desenv.produto_veiculo (
+	cod_modelo int(11) not null,
+	cod_produto int(11) not null,
+	primary key (cod_modelo, cod_produto),
+	constraint produto_veiculo_cod_modelo_fk foreign key (cod_modelo) references modelo (cod_modelo),
+	constraint produto_veiculo_cod_produto_fk foreign key (cod_produto) references produto (cod_produto)
+);
+
+-- automec_desenv.produto
+
+select * from automec_desenv.produto p;
+
+-- Massa de dados para o cadastro de produtos e serviços
+
+create table automec_desenv.produto (
+	cod_produto int(11) not null auto_increment,
+	nom_produto varchar(100) not null,
+	des_tecnica varchar(500) null,
+	und_medida varchar(5) not null,
+	ind_revisao varchar(1) not null default 'N',
+	vda_util int(11) not null default 0,
+	qtd_minima int(11) not null default 0,
+	pct_lucro numeric(10, 2) not null default 0,
+	cod_fabricante int(11) not null,
+	cod_componente int(11) not null,	
+	qtd_atual int(11) not null default 0,
+	vlr_custo numeric(10, 4) not null default 0,
+	vlr_venda numeric(10, 4) not null default 0,
+	ind_situacao varchar(1) not null default 'A',
+	primary key (cod_produto),
+	unique key produto_nom_produto_uk (nom_produto),
+    constraint produto_und_medida_chk check (und_medida in ('UN','LT', 'CX')),
+    constraint produto_ind_revisao_chk check (ind_revisao in ('S','N')),
+	constraint produto_cod_fabricante_fk foreign key (cod_fabricante) references fabricante (cod_fabricante),
+	constraint produto_cod_componente_fk foreign key (cod_componente) references componente (cod_componente),
+    constraint produto_ind_situacao_chk check (ind_situacao in ('A','I'))
+);
+
+-- automec_desenv.item_kit
+
 
 -- automec_desenv.kit
 
-select * from automec_desenv.kit k;
+select * from automec_desenv.kit k order by cod_kit  desc;
 
 select * from automec_desenv.kit k where k.des_kit like concat("%", "Ali", "%")
 
@@ -178,7 +231,7 @@ create or replace view automec_desenv.vw_componentes_sistena as
 
 -- automec_desenv.componente
 
-select * from automec_desenv.componente c;
+select * from automec_desenv.componente c order by cod_sistema, cod_componente desc;
 
 select * from automec_desenv.componente c where c.des_componente like concat("%", "ar", "%")
 
@@ -253,7 +306,7 @@ create table automec_desenv.componente (
 -
 -- automec_desenv.categoria
 
-select * from automec_desenv.sistema s;
+select * from automec_desenv.sistema s order by cod_sistema desc;
 
 select * from automec_desenv.sistema s where s.des_sistema like concat("%", "Ali", "%")
 
@@ -283,7 +336,7 @@ create table automec_desenv.sistema (
 
 -- automec_desenv.fornecedor
 
-select * from automec_desenv.fornecedor f;
+select * from automec_desenv.fornecedor f order by cod_fornecedor desc;
 
 insert into automec_desenv.fornecedor (des_fornecedor, nro_celular, nro_telefone) 
 values
