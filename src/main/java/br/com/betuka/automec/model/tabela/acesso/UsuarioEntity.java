@@ -133,6 +133,10 @@ public class UsuarioEntity implements Serializable {
 	public void setPerfil(PerfilEntity perfil) {
 		this.perfil = perfil;
 	}
+	
+	public boolean estaAtivo() {
+		return this.situacao.equals(SituacaoEnum.A);
+	}
 
 	@Override
 	public int hashCode() {
@@ -166,9 +170,5 @@ public class UsuarioEntity implements Serializable {
 				", senha=" + senha + 
 				", situacao=" + situacao + 
 				", perfil=" + perfil.toString() + "]";
-	}
-	
-	public boolean estaAtivo() {
-		return this.situacao.equals(SituacaoEnum.A);
 	}
 }
