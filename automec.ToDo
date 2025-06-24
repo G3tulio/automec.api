@@ -7,15 +7,15 @@
 
 14. Funcionalidade: Produto x
 
-	a. Listar x
-	b. Adicionar x
-	c. Atualizar x
+	a. Listar
+	b. Adicionar
+	c. Atualizar
 	d. Deletar x                  -- Testar quando o kit estiver relacionado com peça (Kit -> Peça)
-	e. Pesquisar código x
-	f. Pesquisar descrição x
-	g. Buscar descrição x
+	e. Pesquisar código
+	f. Pesquisar descrição
+	g. Buscar descrição
 	
-13. Funcionalidade: Kit
+13. Funcionalidade: Kit x
 
 	a. Listar
 	b. Adicionar
@@ -41,7 +41,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o sistema estiver relacionado com componente (Sistema -> Componente)
+	d. Deletar x                  -- Testar quando o sistema estiver relacionado com componente (Sistema -> Componente)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Buscar descrição
@@ -51,7 +51,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o fornecedor estiver relacionado com peça (Fornecedor -> Peça)
+	d. Deletar x                  -- Testar quando o fornecedor estiver relacionado com peça (Fornecedor -> Peça)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Busara descrição
@@ -61,7 +61,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o fabricante estiver relacionado com peça (Fabricante -> Peça)
+	d. Deletar x                  -- Testar quando o fabricante estiver relacionado com peça (Fabricante -> Peça)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Busara descrição
@@ -71,7 +71,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o cliente estiver relacionado a um serviço (Cliente -> serviço)
+	d. Deletar x                  -- Testar quando o cliente estiver relacionado a um serviço (Cliente -> serviço)
 	e. Pesquisar código
 	f. Buscar nome
 	g. Pesquisar CPF
@@ -81,7 +81,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o mecanico estiver relacionado a um serviço (Mecanico -> serviço)
+	d. Deletar x                  -- Testar quando o mecanico estiver relacionado a um serviço (Mecanico -> serviço)
 	e. Pesquisar código
 	f. Pesquisar nome
 	
@@ -90,7 +90,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o veículo estiver relacionado a um serviço (Veículo -> serviço)
+	d. Deletar x                  -- Testar quando o veículo estiver relacionado a um serviço (Veículo -> serviço)
 	e. Pesquisar código
 	f. Pesquisar placa
 	
@@ -119,7 +119,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar                  -- Testar quando o recurso estiver relacionado a um perfil (funcionalidade: usuario + perfil)
+	d. Deletar x                  -- Testar quando o recurso estiver relacionado a um perfil (funcionalidade: usuario + perfil)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Buscar descrição
