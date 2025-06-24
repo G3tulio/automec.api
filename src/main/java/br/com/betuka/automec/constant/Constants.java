@@ -60,6 +60,16 @@ public class Constants {
 	public static final String FABRICANTE_JA_CADASTRADO = "Fabricante já cadastrado.";
 	
 	/*
+	 * Constants Produto
+	 */
+	public static final String PRODUTO_INEXISTENTE = "Produto/Serviço inexistente.";
+	public static final String PRODUTO_NOME_OBRIGATORIO = "Nome do produto/Serviço deve ser informado.";
+	public static final String PRODUTO_JA_CADASTRADO = "Produto/Serviço já cadastrado.";
+	public static final String PRODUTO_UND_MEDIDA_INEXISTENTE = "Unidade de medida não condiz com o esperado: (UN, LT, CX).";
+	public static final String PRODUTO_INDC_REVISAO_INEXISTENTE = "Indicador de revisão não condiz com o esperado: (S, N).";
+	public static final String PRODUTO_SITUACAO_INEXISTENTE = "Situação não condiz com o esperado: (A, I).";
+	
+	/*
 	 * Constants Cliente
 	 */
 	public static final String CLIENTE_INEXISTENTE = "Cliente inexistente.";

@@ -12,9 +12,9 @@ import br.com.betuka.automec.model.cadastro.ProdutoEntity;
 public interface ProdutoRepository extends JpaRepository<ProdutoEntity, Integer> {
 
 	@Query("select p from ProdutoEntity p where p.nomProduto = :nomProduto")
-	Optional<ProdutoEntity> pesquisarNomeProduto(@Param("nomProduto") String nomProduto);
+	Optional<ProdutoEntity> pesquisarNome(@Param("nomProduto") String nomProduto);
 
 	@Query("select p from ProdutoEntity p where p.nomProduto like concat('%', :nomProduto, '%')")
-	List<ProdutoEntity> buscarNomeProduto(@Param("nomProduto") String nomProduto);
+	List<ProdutoEntity> buscarNome(@Param("nomProduto") String nomProduto);
 	
 }

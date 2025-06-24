@@ -39,10 +39,10 @@ public class ProdutoEntity implements Serializable {
 	private String desTecnica;	
 	
 	@Column(name = "und_medida", nullable = false, unique = false, length = 5)
-	private String undMedida;
+	private String undMedida; // "UN", "CX", "LT"
 	
 	@Column(name = "ind_revisao", nullable = false, unique = false, length = 1, columnDefinition = "N")
-	private String indRevisao;
+	private String indRevisao; // "S", "N"
 	
 	@Column(name = "vda_util", nullable = false, unique = false, columnDefinition = "0")
 	private int vdaUtil;

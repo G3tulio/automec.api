@@ -19,9 +19,9 @@ public class ProdutoDTO {
 	
 	private String desTecnica;
 	
-	private String undMedida;
+	private String undMedida; // "UN", "CX", "LT"
 	
-	private String indRevisao;
+	private String indRevisao; // "S", "N"
 	
 	private int vdaUtil;
 	
@@ -80,8 +80,8 @@ public class ProdutoDTO {
 	public ProdutoDTO(ProdutoEntity produtoEntity) {
 		super();
 		BeanUtils.copyProperties(produtoEntity, this);
-//		this.fabricanteDTO = new FabricanteDTO(produtoEntity.get);
-//		this.componenteDTO = new ComponenteDTO(produtoEntity.getModelo());
+		this.fabricanteDTO = new FabricanteDTO(produtoEntity.getFabricanteEntity());
+		this.componenteDTO = new ComponenteDTO(produtoEntity.getComponenteEntity());
 	}
 	
 	public static List<ProdutoDTO> toList(List<ProdutoEntity> lista) {

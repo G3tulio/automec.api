@@ -31,15 +31,48 @@ create table automec_desenv.produto_veiculo (
 
 -- automec_desenv.produto
 
-select * from automec_desenv.produto p;
+select * from automec_desenv.produto p order by cod_produto;
 
--- Massa de dados para o cadastro de produtos e serviços
+insert into automec_desenv.produto (
+    nom_produto, des_tecnica, und_medida, ind_revisao, vda_util, qtd_minima,
+    pct_lucro, cod_fabricante, cod_componente, qtd_atual, vlr_custo, vlr_venda, ind_situacao
+) values 
+('Filtro de Óleo Bosch', 'Compatível com motores 1.0 a 2.0', 'UN', 'N', 100, 10, 30.00, 1, 6, 50, 20.5000, 26.6500, 'A'),
+('Velas de Ignição NGK', 'Jogo com 4 velas para motores flex', 'CX', 'N', 200, 15, 40.00, 4, 4, 80, 35.0000, 49.0000, 'A'),
+('Correia Dentada Gates', 'Motor 1.6 16V - Gol, Palio, etc.', 'UN', 'S', 150, 20, 35.00, 8, 7, 30, 45.0000, 60.7500, 'A'),
+('Pastilha de Freio TRW', 'Dianteira - Polo, Virtus', 'UN', 'N', 180, 25, 32.00, 9, 17, 40, 38.0000, 50.1600, 'A'),
+('Sensor de Oxigênio Bosch', 'Sensor lambda universal 4 fios', 'UN', 'S', 130, 10, 25.00, 1, 40, 25, 70.0000, 87.5000, 'A'),
+('Amortecedor Dianteiro Cofap', 'Dianteiro - Uno/Mille', 'UN', 'N', 90, 8, 28.00, 12, 13, 20, 120.0000, 153.6000, 'A'),
+('Filtro de Ar Mann', 'Aplicável em motores Fire', 'UN', 'N', 170, 12, 30.00, 10, 36, 35, 18.0000, 23.4000, 'A'),
+('Embreagem Sachs', 'Kit com platô, disco e rolamento', 'CX', 'S', 120, 10, 33.00, 16, 7, 22, 220.0000, 292.6000, 'A'),
+('Bateria Heliar 60Ah', '12V - 60Ah - Pólo positivo à esquerda', 'UN', 'N', 110, 5, 22.00, 23, 24, 10, 450.0000, 549.0000, 'A'),
+('Radiador Behr', 'Radiador alumínio - Celta/Prisma', 'UN', 'N', 100, 7, 27.00, 26, 5, 18, 160.0000, 203.2000, 'A'),
+('Cilindro Mestre Varga', 'Fiat Palio/Siena 1.0 e 1.3', 'UN', 'N', 80, 5, 30.00, 18, 18, 12, 85.0000, 110.5000, 'A'),
+('Disco de Freio Fremax', 'Dianteiro - Gol/Voyage G5/G6', 'UN', 'N', 150, 10, 35.00, 20, 16, 40, 95.0000, 128.2500, 'A'),
+('Sensor de ABS MTE-Thomson', 'Sensor dianteiro esquerdo - HB20', 'UN', 'N', 85, 5, 28.00, 29, 19, 15, 110.0000, 140.8000, 'A'),
+('Catalisador Universal', 'Com substrato cerâmico', 'UN', 'S', 60, 5, 25.00, 14, 38, 8, 230.0000, 287.5000, 'A'),
+('Kit Injeção Delphi', 'Injetores + trilho + sensores', 'CX', 'S', 90, 5, 35.00, 3, 34, 12, 310.0000, 418.5000, 'A'),
+('Unidade ECU Magneti Marelli', 'Controle de injeção - Flex 1.4', 'UN', 'S', 70, 3, 45.00, 2, 27, 5, 480.0000, 696.0000, 'A'),
+('Suspensão Dianteira Nakata', 'Kit batente + coifa + coxim', 'CX', 'N', 100, 10, 30.00, 17, 15, 20, 140.0000, 182.0000, 'A'),
+('Bobina de Ignição Denso', 'Corolla 1.8 16V 2009 a 2014', 'UN', 'N', 75, 5, 33.00, 5, 4, 10, 150.0000, 199.5000, 'A'),
+('Filtro de Combustível Tecfil', 'Linha leve - universal', 'UN', 'N', 180, 20, 30.00, 22, 36, 50, 20.0000, 26.0000, 'A'),
+('Retrovisor Elétrico Lucas', 'HB20 2017/18 com pisca', 'UN', 'N', 50, 2, 20.00, 28, 52, 8, 95.0000, 114.0000, 'A'),
+('Sonda Lambda NGK', 'Sensor 4 fios universal', 'UN', 'S', 120, 10, 35.00, 4, 40, 12, 145.0000, 195.7500, 'A'),
+('Porta Traseira Uno', 'Original Fiat sem pintura', 'UN', 'N', 20, 1, 15.00, 21, 51, 3, 850.0000, 977.5000, 'A'),
+('Painel de Instrumentos Valeo', 'Painel digital - linha Peugeot', 'UN', 'N', 40, 2, 38.00, 15, 45, 4, 320.0000, 441.6000, 'A'),
+('Correia Poly-V Dayco', 'Correia auxiliar - motor 1.6', 'UN', 'N', 150, 10, 28.00, 7, 6, 20, 35.0000, 44.8000, 'A'),
+('Kit Airbag Metal Leve', 'Motorista e passageiro', 'CX', 'S', 60, 5, 50.00, 24, 41, 5, 1300.0000, 1950.0000, 'A'),
+('Coletor de Escape Ajusa', 'Gol G5 1.6 Flex 2009-13', 'UN', 'N', 30, 1, 25.00, 27, 37, 6, 270.0000, 337.5000, 'A'),
+('Ventilador Interno Hella', 'Motor do ventilador - Polo 2015+', 'UN', 'N', 45, 3, 22.00, 23, 32, 7, 180.0000, 219.6000, 'A'),
+('Rodas de Liga Leve Zetec', 'Aro 15” - furação 4x100', 'UN', 'N', 25, 2, 40.00, 21, 54, 5, 450.0000, 630.0000, 'A'),
+('Controle de Estabilidade Lucas', 'Módulo ESC - Ford Focus', 'UN', 'S', 20, 1, 30.00, 28, 44, 3, 650.0000, 845.0000, 'A'),
+('TPMS Freescale', 'Sensor de pressão dos pneus', 'UN', 'N', 70, 5, 30.00, 30, 56, 10, 180.0000, 234.0000, 'A');
 
 create table automec_desenv.produto (
 	cod_produto int(11) not null auto_increment,
 	nom_produto varchar(100) not null,
 	des_tecnica varchar(500) null,
-	und_medida varchar(5) not null,
+	und_medida varchar(5) not null default 'UN',
 	ind_revisao varchar(1) not null default 'N',
 	vda_util int(11) not null default 0,
 	qtd_minima int(11) not null default 0,
@@ -58,9 +91,6 @@ create table automec_desenv.produto (
 	constraint produto_cod_componente_fk foreign key (cod_componente) references componente (cod_componente),
     constraint produto_ind_situacao_chk check (ind_situacao in ('A','I'))
 );
-
--- automec_desenv.item_kit
-
 
 -- automec_desenv.kit
 
@@ -231,6 +261,8 @@ create or replace view automec_desenv.vw_componentes_sistena as
 
 -- automec_desenv.componente
 
+select c.cod_componente, c.des_componente from automec_desenv.componente c order by cod_sistema, cod_componente desc;
+
 select * from automec_desenv.componente c order by cod_sistema, cod_componente desc;
 
 select * from automec_desenv.componente c where c.des_componente like concat("%", "ar", "%")
@@ -362,7 +394,7 @@ create table automec_desenv.fornecedor (
 
 -- automec_desenv.fabricante
 
-select * from automec_desenv.fabricante f;
+select * from automec_desenv.fabricante f order by f.cod_fabricante;
 
 insert into automec_desenv.fabricante (des_fabricante) 
 values 
