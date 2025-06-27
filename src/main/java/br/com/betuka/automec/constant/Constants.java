@@ -68,6 +68,11 @@ public class Constants {
 	public static final String PRODUTO_UND_MEDIDA_INEXISTENTE = "Unidade de medida não condiz com o esperado: (UN, LT, CX).";
 	public static final String PRODUTO_INDC_REVISAO_INEXISTENTE = "Indicador de revisão não condiz com o esperado: (S, N).";
 	public static final String PRODUTO_SITUACAO_INEXISTENTE = "Situação não condiz com o esperado: (A, I).";
+	public static final String PRODUTO_CODIGO_N_INFORMADO = "Informe o código do produto/serviço.";
+	
+	public static final String PRODUTO_KIT_INEXISTENTE = "Item (produto) do kit inexistente.";
+	public static final String PRODUTO_KIT_ITEM_JA_CADASTRADO = "Produto/Serviço já cadastrado neste kit.";
+	public static final String PRODUTO_KIT_QTDE_ZERO = "Quantidade do item (produto) tem que ser maior que Zero.";
 	
 	/*
 	 * Constants Cliente

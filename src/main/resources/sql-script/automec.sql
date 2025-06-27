@@ -1,18 +1,62 @@
-
-
-
 -- automec_desenv.kit_produto
 
-select * from automec_desenv.kit_produto kp order by cod_kit, cod_produto;
+select * from automec_desenv.produto_fornecedor pf order by cod_fornecedor, cod_produto;
 
--- Massa de dados para o cadastro kit de produtos
+-- Massa de dados para o cadastro produtos fornecedor
 
-create table automec_desenv.kit_produto (
+create table automec_desenv.produto_fornecedor (
+    cod_produto_fornecedor int(11) not null auto_increment,
+	cod_fornecedor int(11) not null,
+	cod_produto int(11) not null,
+	primary key (cod_produto_fornecedor),
+	unique key produto_fornecedor_uk (cod_fornecedor, cod_produto),
+	constraint produto_fornecedor_cod_fornecedor foreign key (cod_fornecedor) references fornecedor (cod_fornecedor),
+	constraint produto_fornecedor_cod_produto foreign key (cod_produto) references produto (cod_produto)
+);
+
+-- automec_desenv.vw_produto_kit
+
+select vpk.* from automec_desenv.vw_produto_kit vpk;
+
+create or replace view automec_desenv.vw_produto_kit as
+	select pk.cod_produto, pk.qtd_produto, pk.cod_kit
+	  from automec_desenv.produto_kit pk 
+	 order by pk.cod_produto_kit;
+
+-- automec_desenv.produto_kit
+
+select * from automec_desenv.produto_kit pk order by cod_kit, cod_produto;
+
+-- Kit Econômico (cod_kit = 1)
+insert into automec_desenv.produto_kit (cod_kit, cod_produto, qtd_produto) values
+(1, 32, 4),  -- Óleo 10W40 (4 litros)
+(1,  1, 1),  -- Filtro de Óleo
+(1,  7, 1),  -- Filtro de Ar do Motor
+(1, 19, 1),  -- Filtro de Combustível
+(1, 33, 1),  -- Anel de Vedação
+(1, 34, 1);  -- Etiqueta de Trocat
+
+-- Kit Premium (cod_kit = 2)
+insert into automec_desenv.produto_kit (cod_kit, cod_produto, qtd_produto) values
+(11, 35, 5),  -- Óleo 5W30 (5 litros)
+(11,  1, 1),  -- Filtro de Óleo
+(11,  7, 1),  -- Filtro de Ar do Motor
+(11, 19, 1),  -- Filtro de Combustível
+(11, 36, 1),  -- Filtro de Cabine
+(11, 33, 1),  -- Anel de Vedação
+(11, 37, 1),  -- Parafuso de Dreno
+(11, 38, 1),  -- Flush do Motor
+(11, 34, 1);  -- Etiqueta de Troca
+
+create table automec_desenv.produto_kit (
+    cod_produto_kit int(11) not null auto_increment,
 	cod_kit int(11) not null,
 	cod_produto int(11) not null,
-	primary key (cod_kit, cod_produto),
-	constraint kit_produto_cod_kit foreign key (cod_kit) references kit (cod_kit),
-	constraint kit_produto_cod_produto foreign key (cod_produto) references produto (cod_produto)
+	qtd_produto int(11) not null default 0,
+	primary key (cod_produto_kit),
+	unique key produto_kit_uk (cod_kit, cod_produto),
+	constraint produto_kit_cod_kit foreign key (cod_kit) references kit (cod_kit),
+	constraint produto_kit_cod_produto foreign key (cod_produto) references produto (cod_produto)
 );
 
 -- automec_desenv.produto
@@ -22,9 +66,11 @@ select * from automec_desenv.produto_veiculo pv;
 -- Massa de dados para o cadastro de produtos por veículo
 
 create table automec_desenv.produto_veiculo (
+    cod_produto_veiculo int(11) not null auto_increment,
 	cod_modelo int(11) not null,
 	cod_produto int(11) not null,
-	primary key (cod_modelo, cod_produto),
+	primary key (cod_produto_veiculo),
+	unique key produto_veiculo_uk (cod_modelo, cod_produto),
 	constraint produto_veiculo_cod_modelo_fk foreign key (cod_modelo) references modelo (cod_modelo),
 	constraint produto_veiculo_cod_produto_fk foreign key (cod_produto) references produto (cod_produto)
 );
@@ -94,7 +140,7 @@ create table automec_desenv.produto (
 
 -- automec_desenv.kit
 
-select * from automec_desenv.kit k order by cod_kit  desc;
+select * from automec_desenv.kit k order by cod_kit desc;
 
 select * from automec_desenv.kit k where k.des_kit like concat("%", "Ali", "%")
 
@@ -269,6 +315,7 @@ select * from automec_desenv.componente c where c.des_componente like concat("%"
 
 insert into automec_desenv.componente (des_componente, cod_sistema)
 values
+('Etiqueta de Troca de Óleo', 16),
 ('Motor a combustão interna (gasolina, etanol, diesel, gás)', 1),
 ('Admissão e escape', 1),
 ('Alimentação de combustível', 1),
@@ -344,6 +391,7 @@ select * from automec_desenv.sistema s where s.des_sistema like concat("%", "Ali
 
 insert into automec_desenv.sistema (des_sistema)
 values
+('Adesivos'),
 ('Propulsão ou Motorização'),
 ('Transmissão'),
 ('Suspensão'),
@@ -394,7 +442,7 @@ create table automec_desenv.fornecedor (
 
 -- automec_desenv.fabricante
 
-select * from automec_desenv.fabricante f order by f.cod_fabricante;
+select * from automec_desenv.fabricante f order by f.cod_fabricante desc;
 
 insert into automec_desenv.fabricante (des_fabricante) 
 values 
@@ -829,7 +877,7 @@ create table automec_desenv.veiculo (
 
 -- automec_desenv.vw_modelos_marca
 
-select vmm.cod_modelo, vmm.des_modelo from automec_desenv.vw_modelos_marca vmm where cod_marca = 1;
+select vmm.cod_marca, vmm.cod_modelo, vmm.des_modelo from automec_desenv.vw_modelos_marca vmm where cod_marca = 1;
 
 select * from automec_desenv.vw_modelos_marca vmm where cod_marca = 1;
 

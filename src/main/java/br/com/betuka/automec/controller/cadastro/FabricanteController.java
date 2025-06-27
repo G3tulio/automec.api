@@ -40,9 +40,9 @@ public class FabricanteController {
 	}
 	
 	@PostMapping(value = "adicionar")
-	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody FabricanteDTO FabricanteDTO) {
+	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody FabricanteDTO fabricanteDTO) {
 		try {
-			this.fabricanteService.gravar(FabricanteDTO);
+			this.fabricanteService.gravar(fabricanteDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -56,9 +56,9 @@ public class FabricanteController {
 	}
 	
 	@PutMapping(value = "atualizar")
-	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody FabricanteDTO FabricanteDTO) {
+	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody FabricanteDTO fabricanteDTO) {
 		try {
-			this.fabricanteService.gravar(FabricanteDTO);
+			this.fabricanteService.gravar(fabricanteDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

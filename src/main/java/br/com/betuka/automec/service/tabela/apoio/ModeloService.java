@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.betuka.automec.constant.Constants;
-import br.com.betuka.automec.dto.tabela.apoio.MarcaDTO;
 import br.com.betuka.automec.dto.tabela.apoio.ModeloDTO;
 import br.com.betuka.automec.dto.tabela.apoio.VWModelosMarcaDTO;
 import br.com.betuka.automec.exception.ValidationException;

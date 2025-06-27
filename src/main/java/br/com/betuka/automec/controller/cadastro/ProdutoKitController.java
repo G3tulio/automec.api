@@ -16,21 +16,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.betuka.automec.constant.Constants;
 import br.com.betuka.automec.dto.ResponseDTO;
-import br.com.betuka.automec.dto.cadastro.FornecedorDTO;
+import br.com.betuka.automec.dto.cadastro.ProdutoKitDTO;
+import br.com.betuka.automec.dto.cadastro.VWProdutoKitDTO;
 import br.com.betuka.automec.exception.ValidationException;
-import br.com.betuka.automec.service.cadastro.FornecedorService;
+import br.com.betuka.automec.service.cadastro.ProdutoKitService;
 
 @RestController
-@RequestMapping(value = "automec/fornecedor/")
-public class FornecedorController {
+@RequestMapping(value = "automec/produtokit/")
+public class ProdutoKitController {
 
 	@Autowired
-	private FornecedorService fornecedorService;
+	private ProdutoKitService produtoKitService;
 	
 	@GetMapping(value = "listar")
-	public ResponseEntity<ResponseDTO<List<FornecedorDTO>>> listar() {
+	public ResponseEntity<ResponseDTO<List<ProdutoKitDTO>>> listar() {
 		try {
-			List<FornecedorDTO> lista = this.fornecedorService.listar();
+			List<ProdutoKitDTO> lista = this.produtoKitService.listar();
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (Exception e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -40,9 +41,9 @@ public class FornecedorController {
 	}
 	
 	@PostMapping(value = "adicionar")
-	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody FornecedorDTO fornecedorDTO) {
+	public ResponseEntity<ResponseDTO<Void>> adicionar(@RequestBody ProdutoKitDTO produtoKitDTO) {
 		try {
-			this.fornecedorService.gravar(fornecedorDTO);
+			this.produtoKitService.gravar(produtoKitDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -56,9 +57,9 @@ public class FornecedorController {
 	}
 	
 	@PutMapping(value = "atualizar")
-	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody FornecedorDTO fornecedorDTO) {
+	public ResponseEntity<ResponseDTO<Void>> atualizar(@RequestBody ProdutoKitDTO produtoKitDTO) {
 		try {
-			this.fornecedorService.gravar(fornecedorDTO);
+			this.produtoKitService.gravar(produtoKitDTO);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -71,10 +72,10 @@ public class FornecedorController {
 		}
 	}
 	
-	@DeleteMapping(value = "deletar/{codFornecedor}")
-	public ResponseEntity<ResponseDTO<Void>> deletar(@PathVariable("codFornecedor") int pCodFornecedor) {
+	@DeleteMapping(value = "deletar/{codProdutoKit}")
+	public ResponseEntity<ResponseDTO<Void>> deletar(@PathVariable("codProdutoKit") int pCodProdutoKit) {
     	try {
-            this.fornecedorService.deletar(pCodFornecedor);
+            this.produtoKitService.deletar(pCodProdutoKit);
             return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO));
 		} catch (ValidationException e) {
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -87,27 +88,11 @@ public class FornecedorController {
 		}
 	}
 	
-	@GetMapping(value = "pesquisarCodigo/{codFornecedor}")
-	public ResponseEntity<ResponseDTO<FornecedorDTO>> pesquisarCodigo(@PathVariable("codFornecedor") int pCodFornecedor) {
+	@GetMapping(value = "pesquisarCodigo/{codProdutoKit}")
+	public ResponseEntity<ResponseDTO<ProdutoKitDTO>> pesquisarCodigo(@PathVariable("codProdutoKit") int pCodProdutoKit) {
 		try {
-			FornecedorDTO fornecedorDTO = this.fornecedorService.pesquisarCodigo(pCodFornecedor);
-			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, fornecedorDTO));
-		} catch (ValidationException e) {
-		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
-		                		                e.getMessage()));
-	    } catch (Exception e) {
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
-	                		                Constants.OCORREU_ERRO + e.getMessage()));
-	    }
-	}
-	                     
-	@GetMapping(value = "pesquisarDescricao/{desFornecedor}")
-	public ResponseEntity<ResponseDTO<FornecedorDTO>> pesquisarDescricao(@PathVariable("desFornecedor") String pDesFornecedor) {
-		try {
-			FornecedorDTO fornecedorDTO = this.fornecedorService.pesquisarDescricao(pDesFornecedor);
-			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, fornecedorDTO));
+			ProdutoKitDTO produtoKitDTO = this.produtoKitService.pesquisarCodigo(pCodProdutoKit);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, produtoKitDTO));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
@@ -119,10 +104,26 @@ public class FornecedorController {
 	    }
 	}
 	
-	@GetMapping(value = "buscarDescricao/{desFornecedor}")
-	public ResponseEntity<ResponseDTO<List<FornecedorDTO>>> buscarDescricao(@PathVariable("desFornecedor") String pDesFornecedor) {
+	@GetMapping(value = "pesquisarItem/{codKit}, {codProduto}")
+	public ResponseEntity<ResponseDTO<ProdutoKitDTO>> pesquisarItem(@PathVariable("codKit") int pCodKit, @PathVariable("codProduto") int pCodProduto) {
 		try {
-			List<FornecedorDTO> lista = this.fornecedorService.buscarDescricao(pDesFornecedor);
+			ProdutoKitDTO produtoKitDTO = this.produtoKitService.pesquisarItem(pCodKit, pCodProduto);
+			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, produtoKitDTO));
+		} catch (ValidationException e) {
+		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+		                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+		                		                e.getMessage()));
+	    } catch (Exception e) {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                .body(new ResponseDTO<>(HttpStatus.INTERNAL_SERVER_ERROR.value(), 
+	                		                Constants.OCORREU_ERRO + e.getMessage()));
+	    }
+	} 
+	
+	@GetMapping(value = "listarProdutosKit/{codKit}")
+	public ResponseEntity<ResponseDTO<List<VWProdutoKitDTO>>> listarProdutosKit(@PathVariable("codKit") int pCodKit) {
+		try {
+			List<VWProdutoKitDTO> lista = this.produtoKitService.listarProdutosKit(pCodKit);
 			return ResponseEntity.ok(new ResponseDTO<>(HttpStatus.OK.value(), Constants.EXECUTADO_COM_SUCESSO, lista));
 		} catch (ValidationException e) {
 		        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -2,9 +2,36 @@
 ---------------------------------------------------------------------
 
 
+17. Funcionalidade: Produto Fornecedor x
 
+	a. Listar x
+	b. Adicionar x
+	c. Atualizar x
+	d. Deletar x                  -- Testar quando o kit estiver relacionado com peça (Kit -> Peça)
+	e. Pesquisar código x
+	f. Pesquisar descrição x
+	g. Buscar descrição x
+	
+16. Funcionalidade: Produto Veículo x
 
+	a. Listar x
+	b. Adicionar x
+	c. Atualizar x
+	d. Deletar x                  -- Testar quando o kit estiver relacionado com peça (Kit -> Peça)
+	e. Pesquisar código x
+	f. Pesquisar descrição x
+	g. Buscar descrição x
+	
+15. Funcionalidade: Produto Kit x
 
+	a. Listar
+	b. Adicionar
+	c. Atualizar
+	d. Deletar x                  -- Testar quando o item do kit (produto) estiver relacionado com serviço (item kit -> serviço)
+	e. Pesquisar código
+	f. Pesquisar item
+	g. Listar itens kit
+	
 14. Funcionalidade: Produto x
 
 	a. Listar
