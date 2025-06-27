@@ -1,3 +1,8 @@
+
+
+
+
+
 -- automec_desenv.kit_produto
 
 select * from automec_desenv.produto_fornecedor pf order by cod_fornecedor, cod_produto;
