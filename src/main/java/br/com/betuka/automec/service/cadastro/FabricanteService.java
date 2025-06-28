@@ -12,12 +12,16 @@ import br.com.betuka.automec.dto.cadastro.FabricanteDTO;
 import br.com.betuka.automec.exception.ValidationException;
 import br.com.betuka.automec.model.cadastro.FabricanteEntity;
 import br.com.betuka.automec.repository.cadastro.FabricanteRepository;
+import br.com.betuka.automec.repository.cadastro.ProdutoRepository;
 
 @Service
 public class FabricanteService {
 
 	@Autowired
 	private FabricanteRepository fabricanteRepository;
+	
+	@Autowired
+	private ProdutoRepository produtoRepository;	
 	
 	public List<FabricanteDTO> listar() {
 		return FabricanteDTO.toList(this.fabricanteRepository.findAll());
@@ -61,7 +65,9 @@ public class FabricanteService {
 	public void deletar(int codFabricante) throws ValidationException, Exception {
 		this.pesquisarCodigo(codFabricante);
 		
-		// Mais a frente verificar se o fabricante tem relação com a entidade peça [ FK ]
+		if (this.produtoRepository.existeProdutosFabricante(codFabricante) == true) {
+			throw new ValidationException(Constants.FABRICANTE_UTILIZADO);
+		}
 		
 		try {
 			this.fabricanteRepository.deleteById(codFabricante);

@@ -16,5 +16,8 @@ public interface ProdutoRepository extends JpaRepository<ProdutoEntity, Integer>
 
 	@Query("select p from ProdutoEntity p where p.nomProduto like concat('%', :nomProduto, '%')")
 	List<ProdutoEntity> buscarNome(@Param("nomProduto") String nomProduto);
+
+	@Query("select (count(p) > 0) as existe from ProdutoEntity p where p.fabricanteEntity.codFabricante = :codFabricante")
+	boolean existeProdutosFabricante(@Param("codFabricante") int codFabricante);	
 	
 }

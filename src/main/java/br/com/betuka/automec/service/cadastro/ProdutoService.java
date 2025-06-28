@@ -126,4 +126,12 @@ public class ProdutoService {
 			throw new Exception(e.getMessage());
 		}
 	}
+	
+	public boolean existeProdutosFabricante(int codFabricante) throws ValidationException, Exception {
+		try {
+			return this.produtoRepository.existeProdutosFabricante(codFabricante);
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+	}
 }

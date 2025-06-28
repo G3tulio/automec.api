@@ -81,17 +81,17 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar x                  -- Testar quando o fornecedor estiver relacionado com peça (Fornecedor -> Peça)
+	d. Deletar x                  -- Testar quando o fornecedor estiver relacionado com peça (Fornecedor -> Produto)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Busara descrição
 	
-9. Funcionalidade: Fabricante x
+9. Funcionalidade: Fabricante
 
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar x                  -- Testar quando o fabricante estiver relacionado com peça (Fabricante -> Peça)
+	d. Deletar
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Busara descrição
@@ -101,7 +101,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar x                  -- Testar quando o cliente estiver relacionado a um serviço (Cliente -> serviço)
+	d. Deletar x                  -- Testar quando o cliente estiver relacionado a um serviço (Cliente -> Serviço)
 	e. Pesquisar código
 	f. Buscar nome
 	g. Pesquisar CPF
@@ -111,7 +111,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar x                  -- Testar quando o mecanico estiver relacionado a um serviço (Mecanico -> serviço)
+	d. Deletar x                  -- Testar quando o mecanico estiver relacionado a um serviço (Mecanico -> Serviço)
 	e. Pesquisar código
 	f. Pesquisar nome
 	
@@ -120,7 +120,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar x                  -- Testar quando o veículo estiver relacionado a um serviço (Veículo -> serviço)
+	d. Deletar x                  -- Testar quando o veículo estiver relacionado a um serviço (Veículo -> Serviço)
 	e. Pesquisar código
 	f. Pesquisar placa
 	
@@ -149,7 +149,7 @@
 	a. Listar
 	b. Adicionar
 	c. Atualizar
-	d. Deletar x                  -- Testar quando o recurso estiver relacionado a um perfil (funcionalidade: usuario + perfil)
+	d. Deletar x                  -- Testar quando o recurso estiver relacionado a um perfil (PerfilRecurso: Perfil -> Recurso)
 	e. Pesquisar código
 	f. Pesquisar descrição
 	g. Buscar descrição

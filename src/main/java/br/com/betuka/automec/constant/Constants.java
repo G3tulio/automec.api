@@ -58,6 +58,7 @@ public class Constants {
 	public static final String FABRICANTE_INEXISTENTE = "Fabricante inexistente.";
 	public static final String FABRICANTE_DESCRICAO_OBRIGATORIA = "Descrição deve ser informada.";
 	public static final String FABRICANTE_JA_CADASTRADO = "Fabricante já cadastrado.";
+	public static final String FABRICANTE_UTILIZADO = "Não foi possível excluir o fabricante. Existem registros relacionados.";
 	
 	/*
 	 * Constants Produto
